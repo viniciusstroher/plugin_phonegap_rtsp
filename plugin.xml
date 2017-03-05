@@ -38,6 +38,7 @@
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
+            <!-- NOME QUE O cordova exec vai chamar e o mapa da classe principal-->
             <feature name="RtspW3">
                 <param name="android-package" value="org.apache.cordova.rtspw3.RtspW3"/>
                 <param name="onload" value="true"/>

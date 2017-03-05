@@ -17,7 +17,7 @@
        under the License.
 */
 
-package org.apache.cordova.splashscreen;
+package org.apache.cordova.rtspw3.RtspW3;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
