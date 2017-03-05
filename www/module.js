@@ -21,13 +21,18 @@
 
 var exec = require('cordova/exec');
 
-var rtsp_w3 = {
-    show:function() {
-        exec(null, null, "SplashScreen", "show", []);
-    },
-    hide:function() {
-        exec(null, null, "SplashScreen", "hide", []);
+var RtspW3 = {
+    abrirRtsp:function(link) {
+        
+        var params = {
+          link: link
+        };
+
+        /*RtspW3 -> nome no plugin.xml*/
+        /*abrirRtsp -> metodo*/
+        exec(null, null, "RtspW3", "abrirRtsp", [params]);
+        
     }
 };
 
-module.exports = rtsp_w3;
+module.exports = RtspW3;

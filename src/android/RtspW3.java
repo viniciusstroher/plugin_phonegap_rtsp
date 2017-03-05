@@ -94,7 +94,8 @@ public class RtspW3 extends CordovaPlugin {
     //AQUI FICAO AS ACOES
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        /*if (action.equals("hide")) {
+        /* EXEMPLOS NAO APAGAR
+        if (action.equals("hide")) {
             cordova.getActivity().runOnUiThread(new Runnable() {
                 public void run() {
                     webView.postMessage("splashscreen", "hide");
@@ -109,6 +110,14 @@ public class RtspW3 extends CordovaPlugin {
         } else {
             return false;
         }*/
+
+        if (action.equals("abrirRtsp")) {
+            /*cordova.getActivity().runOnUiThread(new Runnable() {
+                public void run() {
+                    webView.postMessage("splashscreen", "hide");
+                }
+            });*/
+        }
 
         callbackContext.success();
         return true;

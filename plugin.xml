@@ -32,7 +32,8 @@
     </engines>
 
     <js-module src="www/module.js" name="RtspW3">
-        <clobbers target="navigator.rtsp_w3" />
+        <!-- acessa como navigator.RtspW3 -->
+        <clobbers target="navigator.RtspW3" />
     </js-module>
 
     <!-- android -->
