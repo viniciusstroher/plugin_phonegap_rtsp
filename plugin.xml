@@ -45,6 +45,17 @@
                 <param name="onload" value="true"/>
             </feature>
         </config-file>
+        
+        <!-- include arquivos e activity
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:label="@string/multi_app_name" android:name="com.synconset.MultiImageChooserActivity" android:theme="@android:style/Theme.Holo.Light">
+            </activity>
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </config-file>
+        -->
 
         <source-file src="src/android/RtspW3.java" target-dir="src/org/apache/cordova/rtspw3" />
     </platform>
