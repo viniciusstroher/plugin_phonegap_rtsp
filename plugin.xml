@@ -11,8 +11,10 @@
     }
   },1000);
 
+#ffmpeg -r 25 -rtbufsize 2100M -f dshow -i video="Integrated Webcam" -r 25 -pix_fmt yuv420p -s hd720 -vcodec libx264 -preset ultrafast -b:v 2400k -maxrate 2400k -bufsize 600k -threads 0 -tune zerolatency -f flv rtmp://localhost/live/web
 
-  ffmpeg -r 25 -rtbufsize 2100M -f dshow -i video="Integrated Webcam" -r 25 -pix_fmt yuv420p -s hd720 -vcodec libx264 -preset ultrafast -b:v 2400k -maxrate 2400k -bufsize 600k -threads 0 -tune zerolatency  -f rtsp -rtsp_transport tcp rtsp://localhost:80/live/STREAM_NAME
+
+ ffmpeg -r 25 -rtbufsize 500k -f dshow -i video="Integrated Webcam" -r 25 -vcodec libx264 -b:v 240k -maxrate 240k -bufsize 500k -threads 0 -tune zerolatency -f flv rtmp://localhost/live/web
 -->
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
