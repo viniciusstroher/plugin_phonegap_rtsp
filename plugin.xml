@@ -20,7 +20,7 @@
 -->
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-           id="cordova-plugin-splashscreen"
+           id="cordova-plugin-rtsp-w3"
       version="4.0.1">
     <name>RTSP W3</name>
     <description>RTSP W3 Player Plugin</description>
@@ -57,12 +57,12 @@
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-        </config-file>
+        </config-file>-->
         <!-- configuracoes de activity -->
 
         <!-- classes -->
         <source-file src="src/android/RtspW3.java" target-dir="src/org/apache/cordova/rtspw3" />
-        <!--<source-file src="src/android/RtspW3Activity.java" target-dir="src/org/apache/cordova/rtspw3" />
+        <!--<source-file src="src/android/RtspW3Activity.java" target-dir="src/org/apache/cordova/rtspw3" />-->
         <!-- classes -->
 
         <!-- templates -->
