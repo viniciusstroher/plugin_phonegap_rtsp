@@ -65,22 +65,15 @@ public class RtspW3Activity extends Activity{
         videoView.setVideoPath(link_rtsp);
         videoView.setMediaController(new MediaController(this));
         videoView.requestFocus();
-        videoView.start();
         
+
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
-                
+                videoView.start();
             }
         });
-        /*
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-          @Override       
-          public void onPrepared(MediaPlayer mp) {
-               mp.setLooping(true);
-               videoView.start();
-            }
-        });*/
+        
     }
 
 }
