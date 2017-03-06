@@ -65,13 +65,12 @@ public class RtspW3Activity extends Activity{
         videoView.setVideoPath(link_rtsp);
         videoView.setMediaController(new MediaController(this));
         videoView.requestFocus();
-
+        videoView.start();
+        
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
-                // optional need Vitamio 4.0
-                mediaPlayer.setPlaybackSpeed(1.0f);
-                videoView.start();
+                
             }
         });
         /*
