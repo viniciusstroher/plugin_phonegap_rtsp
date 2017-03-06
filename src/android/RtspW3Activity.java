@@ -45,6 +45,7 @@ public class RtspW3Activity extends Activity{
         fakeR = new FakeR(this);
         setContentView(fakeR.getId("layout", "rtsp_w3_activity"));
         
+        VideoView vv = (VideoView) findViewById(fakeR.getId("id", "videoview"));
     }
 
 }
