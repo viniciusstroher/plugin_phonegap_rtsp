@@ -57,12 +57,12 @@ public class RtspW3 extends CordovaPlugin {
         
         // Make WebView invisible while loading URL
         // CB-11326 Ensure we're calling this on UI thread
-        cordova.getActivity().runOnUiThread(new Runnable() {
+        /*cordova.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 getView().setVisibility(View.INVISIBLE);
             }
-        });
+        });*/
 
     }
 

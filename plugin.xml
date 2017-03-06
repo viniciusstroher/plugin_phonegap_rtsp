@@ -47,6 +47,7 @@
         </config-file>
 
         <!-- configuracoes de activity -->
+       <!-- 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             
             <activity android:label="w3_plugin" android:name="org.apache.cordova.rtspw3.RtspW3Activity">
@@ -61,11 +62,11 @@
 
         <!-- classes -->
         <source-file src="src/android/RtspW3.java" target-dir="src/org/apache/cordova/rtspw3" />
-        <source-file src="src/android/RtspW3Activity.java" target-dir="src/org/apache/cordova/rtspw3" />
+        <!--<source-file src="src/android/RtspW3Activity.java" target-dir="src/org/apache/cordova/rtspw3" />
         <!-- classes -->
 
         <!-- templates -->
-        <source-file src="src/android/res/layout/rtsp_w3_activity.xml" target-dir="res/layout"/>
+        <!--<source-file src="src/android/res/layout/rtsp_w3_activity.xml" target-dir="res/layout"/>
         <!-- templates -->
         
     </platform>
