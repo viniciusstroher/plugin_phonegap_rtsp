@@ -38,6 +38,11 @@ import android.widget.MediaController;
 import android.widget.VideoView;
 import android.media.MediaPlayer;
 
+import io.vov.vitamio.LibsChecker;
+import io.vov.vitamio.MediaPlayer;
+import io.vov.vitamio.widget.MediaController;
+import io.vov.vitamio.widget.VideoView;
+
 import org.apache.cordova.rtspw3.FakeR;
 
 public class RtspW3Activity extends Activity{
@@ -57,14 +62,17 @@ public class RtspW3Activity extends Activity{
 
         videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
 
-        MediaController ctlr = new MediaController(this);
-        ctlr.setAnchorView(videoView);
+        videoView.setVideoPath(path);
+        videoView.setMediaController(new MediaController(this));
+        videoView.requestFocus();
 
-        videoView.setMediaController(ctlr);
-        videoView.setVideoURI(Uri.parse(link_rtsp));  
-        videoView.requestFocus();  
-        videoView.start();
-
+        mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                // optional need Vitamio 4.0
+                mediaPlayer.setPlaybackSpeed(1.0f);
+            }
+        });
         /*
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
           @Override       
