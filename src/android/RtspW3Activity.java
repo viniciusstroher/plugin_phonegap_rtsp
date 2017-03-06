@@ -32,6 +32,11 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.util.Log;
 
+import android.net.Uri;
+import android.view.Window;
+import android.widget.MediaController;
+import android.widget.VideoView;
+
 import org.apache.cordova.rtspw3.FakeR;
 
 public class RtspW3Activity extends Activity{
@@ -45,7 +50,21 @@ public class RtspW3Activity extends Activity{
         fakeR = new FakeR(this);
         setContentView(fakeR.getId("layout", "rtsp_w3_activity"));
         
-        VideoView vv = (VideoView) findViewById(fakeR.getId("id", "videoview"));
+        //PEGA PARAMETRO
+        link_rtsp = getIntent().getStringExtra("LINK_RTSP");
+
+        VideoView videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
+
+        Uri video = Uri.parse(link_rtsp);
+        videoView.setVideoURI(video);
+        
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+          @Override       
+          public void onPrepared(MediaPlayer mp) {
+               mp.setLooping(true);
+               videoView.start();
+            }
+        });
     }
 
 }
