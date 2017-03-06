@@ -57,16 +57,18 @@ public class RtspW3Activity extends Activity{
 
         videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
 
-        Uri video = Uri.parse(link_rtsp);
-        videoView.setVideoURI(video);
-        
+        videoView.setVideoURI(Uri.parse(link_rtsp));  
+        videoView.requestFocus();  
+        videoView.start();
+
+        /*
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
           @Override       
           public void onPrepared(MediaPlayer mp) {
                mp.setLooping(true);
                videoView.start();
             }
-        });
+        });*/
     }
 
 }
