@@ -57,7 +57,7 @@ public class RtspW3Activity extends Activity{
 
         videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
 
-        MediaControllerctlr ctlr = new MediaController(this);
+        MediaController ctlr ctlr = new MediaController(this);
         ctlr.setAnchorView(videoView);
 
         videoView.setMediaController(ctlr);
