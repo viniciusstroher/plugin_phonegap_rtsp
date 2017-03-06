@@ -43,6 +43,7 @@ import org.apache.cordova.rtspw3.FakeR;
 public class RtspW3Activity extends Activity{
     private String link_rtsp;
     private FakeR fakeR;
+    private VideoView videoView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class RtspW3Activity extends Activity{
         //PEGA PARAMETRO
         link_rtsp = getIntent().getStringExtra("LINK_RTSP");
 
-        VideoView videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
+        videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
 
         Uri video = Uri.parse(link_rtsp);
         videoView.setVideoURI(video);
