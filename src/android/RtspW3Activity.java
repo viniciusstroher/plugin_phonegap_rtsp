@@ -32,7 +32,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.util.Log;
 
-import org.apache.rtspw3.FakeR;
+import org.apache.cordova.rtspw3.FakeR;
 
 public class RtspW3Activity extends Activity{
     private String link_rtsp;
