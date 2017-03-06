@@ -27,6 +27,10 @@ import org.apache.cordova.CordovaWebView;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import android.app.Activity;
+import android.os.Bundle;
+import android.content.Intent;
+
 public class RtspW3Activity extends Activity{
     private String link_rtsp;
 
