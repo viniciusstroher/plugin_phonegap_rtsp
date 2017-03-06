@@ -55,7 +55,15 @@
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
+            
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+            
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+            
             <uses-permission android:name="android.permission.INTERNET" />
         </config-file>
         <!-- configuracoes de activity -->
@@ -70,6 +78,9 @@
         <source-file src="src/android/res/layout/rtsp_w3_activity.xml" target-dir="res/layout"/>
         <!-- templates -->
         
+        <!-- gradle para baixa as dependencias -->
+        <framework src="build.gradle" custom="true" type="gradleReference" />
+
     </platform>
 
     
