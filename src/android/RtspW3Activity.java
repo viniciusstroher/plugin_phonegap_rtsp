@@ -66,7 +66,7 @@ public class RtspW3Activity extends Activity{
         videoView.setMediaController(new MediaController(this));
         videoView.requestFocus();
 
-        mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
                 // optional need Vitamio 4.0
