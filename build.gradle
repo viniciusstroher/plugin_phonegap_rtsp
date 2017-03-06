@@ -1,3 +1,18 @@
-dependencies {
-    compile 'me.neavo:vitamio:4.2.2'
-} 
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        compile 'me.neavo:vitamio:4.2.2'
+    }
+}
+
+allprojects {
+    version = VERSION_NAME
+    group = GROUP
+
+    repositories {
+        mavenCentral()
+    }
+}
