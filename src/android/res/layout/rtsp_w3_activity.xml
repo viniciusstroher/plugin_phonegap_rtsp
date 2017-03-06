@@ -3,6 +3,12 @@
     android:layout_height="fill_parent"
     android:layout_width="fill_parent"
     android:orientation="vertical" > <!-- android:background="@drawable/image_bg" -->
+     <TextView
+        style="@style/meuStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Teste"
+        />
     <!--
     <VideoView
         android:id="@+id/videoview"
