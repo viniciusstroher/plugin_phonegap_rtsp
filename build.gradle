@@ -1,0 +1,3 @@
+dependencies {
+    compile 'me.neavo:vitamio:4.2.2'
+} 
