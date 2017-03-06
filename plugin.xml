@@ -11,6 +11,8 @@
     }
   },1000);
 
+    TENTAR USAR ICECAST PARA STREAMING DE VIDEO !!!!
+    icecast
 #ffmpeg -r 25 -rtbufsize 2100M -f dshow -i video="Integrated Webcam" -r 25 -pix_fmt yuv420p -s hd720 -vcodec libx264 -preset ultrafast -b:v 2400k -maxrate 2400k -bufsize 600k -threads 0 -tune zerolatency -f flv rtmp://localhost/live/web
 
 
