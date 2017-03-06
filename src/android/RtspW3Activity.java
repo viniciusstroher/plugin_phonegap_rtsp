@@ -42,7 +42,7 @@ public class RtspW3Activity extends Activity{
         super.onCreate(savedInstanceState);
         
         fakeR = new FakeR(this);
-        setContentView(fakeR.getId("layout", "multiselectorgrid"))
+        setContentView(fakeR.getId("layout", "rtsp_w3_activity"));
         
     }
 
