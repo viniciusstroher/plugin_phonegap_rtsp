@@ -47,18 +47,28 @@
             </feature>
         </config-file>
 
-        <!-- include arquivos e activity
+        <!-- configuracoes de activity -->
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <activity android:label="@string/multi_app_name" android:name="com.synconset.MultiImageChooserActivity" android:theme="@android:style/Theme.Holo.Light">
+            
+            <activity android:label="w3_plugin" android:name="org.apache.cordova.rtspw3.RtspW3.RtspW3Activity">
             </activity>
+
         </config-file>
-        
+
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
         </config-file>
-        -->
+        <!-- configuracoes de activity -->
 
+        <!-- classes -->
         <source-file src="src/android/RtspW3.java" target-dir="src/org/apache/cordova/rtspw3" />
+        <source-file src="src/android/RtspW3Activity.java" target-dir="src/org/apache/cordova/rtspw3" />
+        <!-- classes -->
+
+        <!-- templates -->
+        <source-file src="src/android/res/layout/rtsp_w3_activity.xml" target-dir="res/layout"/>
+        <!-- templates -->
+        
     </platform>
 
     
