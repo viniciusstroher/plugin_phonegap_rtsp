@@ -57,6 +57,10 @@ public class RtspW3Activity extends Activity{
 
         videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
 
+        MediaControllerctlr ctlr = new MediaController(this);
+        ctlr.setAnchorView(videoView);
+
+        videoView.setMediaController(ctlr);
         videoView.setVideoURI(Uri.parse(link_rtsp));  
         videoView.requestFocus();  
         videoView.start();
