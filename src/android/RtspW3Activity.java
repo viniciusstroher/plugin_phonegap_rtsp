@@ -30,6 +30,9 @@ import org.json.JSONException;
 import android.app.Activity;
 import android.os.Bundle;
 import android.content.Intent;
+import android.util.Log;
+
+import org.apache.rtspw3.FakeR;
 
 public class RtspW3Activity extends Activity{
     private String link_rtsp;
@@ -38,8 +41,8 @@ public class RtspW3Activity extends Activity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        String package_name = getApplication().getPackageName();
-        setContentView(getApplication().getResources().getIdentifier("rtsp_w3_acitivity", "layout", package_name));
+        fakeR = new FakeR(this);
+        setContentView(fakeR.getId("layout", "multiselectorgrid"))
         
     }
 
