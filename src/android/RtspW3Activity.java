@@ -1,4 +1,4 @@
-package org.apache.cordova.rtspw3.RtspW3;
+package org.apache.cordova.rtspw3;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
