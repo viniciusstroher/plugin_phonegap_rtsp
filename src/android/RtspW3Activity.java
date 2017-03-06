@@ -36,6 +36,7 @@ import org.apache.cordova.rtspw3.FakeR;
 
 public class RtspW3Activity extends Activity{
     private String link_rtsp;
+    private FakeR fakeR;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
