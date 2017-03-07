@@ -76,8 +76,8 @@
         <!-- templates -->
         
         <!-- gradle para baixa as dependencias -->
-        <framework src="build.gradle" custom="true" type="gradleReference" />
-
+        <!--<framework src="build.gradle" custom="true" type="gradleReference" />
+        -->
     </platform>
 
     
