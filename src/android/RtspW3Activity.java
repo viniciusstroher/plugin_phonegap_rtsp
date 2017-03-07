@@ -63,12 +63,12 @@ public class RtspW3Activity extends Activity{
         
         //PEGA PARAMETRO
         link_rtsp = getIntent().getStringExtra("LINK_RTSP");
-
-        videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
-
         if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this)){
             return;
         }
+        videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
+
+        
 
 
         videoView.setVideoPath(link_rtsp);
