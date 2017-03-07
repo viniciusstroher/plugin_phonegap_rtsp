@@ -66,6 +66,11 @@ public class RtspW3Activity extends Activity{
 
         videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
 
+        if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this)){
+            return;
+        }
+
+
         videoView.setVideoPath(link_rtsp);
         videoView.setVideoQuality(MediaPlayer.VIDEOQUALITY_HIGH);
         videoView.setBufferSize(2048);
