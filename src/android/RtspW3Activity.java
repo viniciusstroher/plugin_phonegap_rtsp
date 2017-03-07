@@ -65,11 +65,12 @@ public class RtspW3Activity extends Activity{
         link_rtsp = getIntent().getStringExtra("LINK_RTSP");
 
         videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
-        
-        videoView.setVideoURI(Uri.parse(link_rtsp));
-        videoView.setMediaController(new MediaController(this));
         videoView.setVisibility(View.VISIBLE);
-        videoView.start();
+
+        videoView.setVideoPath(link_rtsp);
+        videoView.setMediaController(new MediaController(this));
+        
+        videoView.requestFocus();
          
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
