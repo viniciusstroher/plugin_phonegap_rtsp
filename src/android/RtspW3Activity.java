@@ -49,6 +49,7 @@ public class RtspW3Activity extends Activity{
     private String link_rtsp;
     private FakeR fakeR;
     private VideoView videoView;
+    private MediaController mController;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
