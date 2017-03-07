@@ -52,6 +52,11 @@
             <activity android:label="w3_plugin" android:name="org.apache.cordova.rtspw3.RtspW3Activity">
             </activity>
 
+            <activity android:name="io.vov.vitamio.activity.InitActivity" 
+       android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden"
+       android:launchMode="singleTop"
+        android:theme="@android:style/Theme.NoTitleBar"
+        android:windowSoftInputMode="stateAlwaysHidden"/>     
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
