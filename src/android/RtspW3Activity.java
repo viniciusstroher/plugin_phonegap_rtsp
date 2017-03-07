@@ -66,7 +66,7 @@ public class RtspW3Activity extends Activity{
 
         videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
         
-        videoView.setVideoPath(path);
+        videoView.setVideoPath(link_rtsp);
         videoView.setMediaController(new MediaController(this));
         videoView.requestFocus();
          
