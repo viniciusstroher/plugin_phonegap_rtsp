@@ -34,15 +34,15 @@ import android.util.Log;
 
 import android.net.Uri;
 import android.view.Window;
-//import android.widget.MediaController;
-//import android.widget.VideoView;
-//import android.media.MediaPlayer;
-
+import android.widget.MediaController;
+import android.widget.VideoView;
+import android.media.MediaPlayer;
+/*
 import io.vov.vitamio.LibsChecker;
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
-
+*/
 import org.apache.cordova.rtspw3.FakeR;
 
 public class RtspW3Activity extends Activity{
@@ -61,7 +61,7 @@ public class RtspW3Activity extends Activity{
         link_rtsp = getIntent().getStringExtra("LINK_RTSP");
 
         videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
-
+        /*
         videoView.setVideoPath(link_rtsp);
         videoView.setMediaController(new MediaController(this));
         videoView.requestFocus();
@@ -72,8 +72,24 @@ public class RtspW3Activity extends Activity{
             public void onPrepared(MediaPlayer mediaPlayer) {
                 mediaPlayer.start();
             }
-        });
+        });*/
+
         
+        mController = new MediaController(this);
+        videoView.setMediaController(mController);
+        videoView.requestFocus();
+        
+        Uri uri = Uri.parse(link_rtsp);
+        videoView.setVideoURI(uri);
+        videoView.start();
+
+        videoView.setOnPreparedListener(new OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                 
+                mp.start();
+            }
+         });
     }
 
 }
