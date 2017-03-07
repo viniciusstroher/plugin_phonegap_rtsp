@@ -63,6 +63,7 @@ public class RtspW3Activity extends Activity{
         
         //PEGA PARAMETRO
         link_rtsp = getIntent().getStringExtra("LINK_RTSP");
+        //inicializa plugin
         if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this)){
             return;
         }
