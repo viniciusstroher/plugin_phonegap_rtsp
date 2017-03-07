@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<io.vov.vitamio.widget.CenterLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <io.vov.vitamio.widget.VideoView
-        android:id="@+id/videoview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
-</io.vov.vitamio.widget.CenterLayout>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="fill_parent"
     android:layout_width="fill_parent"
-    android:orientation="vertical" > <!-- android:background="@drawable/image_bg" -->
+    android:orientation="vertical" >
+    
+    <io.vov.vitamio.widget.CenterLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <io.vov.vitamio.widget.VideoView
+            android:id="@+id/videoview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+    </io.vov.vitamio.widget.CenterLayout>
+
+ <!-- android:background="@drawable/image_bg" -->
      <TextView
         
         android:layout_width="fill_parent"
