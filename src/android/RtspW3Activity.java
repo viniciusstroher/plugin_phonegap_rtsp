@@ -70,7 +70,7 @@ public class RtspW3Activity extends Activity{
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
-                videoView.start();
+                mediaPlayer.start();
             }
         });
         
