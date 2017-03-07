@@ -37,6 +37,8 @@ import android.view.Window;
 import android.widget.MediaController;
 import android.widget.VideoView;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+
 /*
 import io.vov.vitamio.LibsChecker;
 import io.vov.vitamio.MediaPlayer;
