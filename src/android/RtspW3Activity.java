@@ -59,7 +59,7 @@ import io.vov.vitamio.MediaPlayer.OnBufferingUpdateListener;
 import io.vov.vitamio.MediaPlayer.OnCompletionListener;
 import io.vov.vitamio.MediaPlayer.OnVideoSizeChangedListener;
 
-public class RtspW3Activity extends Activity{
+public class RtspW3Activity extends Activity implements SurfaceHolder.Callback{
     private static final String TAG = "MediaPlayerDemo";
 
     private String link_rtsp;
