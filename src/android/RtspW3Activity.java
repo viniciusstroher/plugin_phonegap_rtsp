@@ -109,41 +109,18 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
         mMediaPlayer = new MediaPlayer(this);
         mMediaPlayer.setDataSource(link_rtsp);
         mMediaPlayer.setDisplay(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                mediaPlayer.setPlaybackSpeed(1.0f);
-            }
+            
         });
 
         mMediaPlayer.prepareAsync();
         
-        mMediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                mediaPlayer.setPlaybackSpeed(1.0f);
-            }
-        });
+        mMediaPlayer.setOnBufferingUpdateListener(this);
         
-        mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                mediaPlayer.setPlaybackSpeed(1.0f);
-            }
-        });
+        mMediaPlayer.setOnCompletionListener(this);
         
-        mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                mediaPlayer.setPlaybackSpeed(1.0f);
-            }
-        });
+        mMediaPlayer.setOnPreparedListener(this);
 
-        mMediaPlayer.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                mediaPlayer.setPlaybackSpeed(1.0f);
-            }
-        });
+        mMediaPlayer.setOnVideoSizeChangedListener(this);
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
     }
