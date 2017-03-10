@@ -146,7 +146,7 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
 
             setVolumeControlStream(AudioManager.STREAM_MUSIC);
         } catch (Exception e) {
-            Log.e(TAG, "error: " + e.getMessage(), e);
+            Log.e("TAG", "error: " + e.getMessage(), e);
         }
     }
 
