@@ -106,6 +106,15 @@ public class RtspW3Activity extends Activity{
         holder.addCallback(this);
         holder.setFormat(PixelFormat.RGBA_8888); 
 
+        
+
+    }
+
+    @Override
+    public void surfaceCreated(SurfaceHolder holder) {
+        Log.d(TAG, "surfaceCreated called");
+        link_rtsp = getIntent().getStringExtra("LINK_RTSP");
+        
         mMediaPlayer = new MediaPlayer(this);
         mMediaPlayer.setDataSource(link_rtsp);
         mMediaPlayer.setDisplay(holder);
@@ -144,5 +153,4 @@ public class RtspW3Activity extends Activity{
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
     }
-
 }
