@@ -106,21 +106,6 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
         holder.addCallback(this);
         holder.setFormat(PixelFormat.RGBA_8888); 
 
-        mMediaPlayer = new MediaPlayer(this);
-        mMediaPlayer.setDataSource(link_rtsp);
-        mMediaPlayer.setDisplay(this);
-
-        mMediaPlayer.prepareAsync();
-        
-        mMediaPlayer.setOnBufferingUpdateListener(this);
-        
-        mMediaPlayer.setOnCompletionListener(this);
-        
-        mMediaPlayer.setOnPreparedListener(this);
-
-        mMediaPlayer.setOnVideoSizeChangedListener(this);
-        setVolumeControlStream(AudioManager.STREAM_MUSIC);
-
     }
 
     public void onPrepared(MediaPlayer mediaplayer) {
@@ -140,5 +125,25 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
     public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
         
     }
+
+    public void surfaceCreated(SurfaceHolder holder) {
+        
+        mMediaPlayer = new MediaPlayer(this);
+        mMediaPlayer.setDataSource(link_rtsp);
+        mMediaPlayer.setDisplay(this);
+
+        mMediaPlayer.prepareAsync();
+        
+        mMediaPlayer.setOnBufferingUpdateListener(this);
+        
+        mMediaPlayer.setOnCompletionListener(this);
+        
+        mMediaPlayer.setOnPreparedListener(this);
+
+        mMediaPlayer.setOnVideoSizeChangedListener(this);
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
+
+    }
+
 
 }
