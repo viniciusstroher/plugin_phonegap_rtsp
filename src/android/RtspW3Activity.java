@@ -48,6 +48,7 @@ import io.vov.vitamio.widget.VideoView;
 
 import org.apache.cordova.rtspw3.FakeR;
 
+import android.graphics.PixelFormat;
 import android.media.AudioManager;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
