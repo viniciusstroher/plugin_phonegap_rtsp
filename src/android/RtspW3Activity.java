@@ -74,7 +74,7 @@ public class RtspW3Activity extends Activity{
 
         videoView.setVideoPath(link_rtsp);
         videoView.setVideoQuality(MediaPlayer.VIDEOQUALITY_HIGH);
-        videoView.setBufferSize(2048);
+        //videoView.setBufferSize(2048);
         videoView.requestFocus();
         videoView.start();
         videoView.setMediaController(new MediaController(this));
