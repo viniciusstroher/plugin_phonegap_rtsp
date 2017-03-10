@@ -87,9 +87,6 @@ public class RtspW3Activity extends Activity{
         }
         /*videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
 
-        
-
-
         videoView.setVideoPath(link_rtsp);
         videoView.setVideoQuality(MediaPlayer.VIDEOQUALITY_HIGH);
         //videoView.setBufferSize(2048);
@@ -111,32 +108,46 @@ public class RtspW3Activity extends Activity{
 
         mMediaPlayer = new MediaPlayer(this);
         mMediaPlayer.setDataSource(link_rtsp);
-        mMediaPlayer.setDisplay(holder);
+        mMediaPlayer.setDisplay(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.setPlaybackSpeed(1.0f);
+            }
+        });
+
         mMediaPlayer.prepareAsync();
-        mMediaPlayer.setOnBufferingUpdateListener(this);
-        mMediaPlayer.setOnCompletionListener(this);
-        mMediaPlayer.setOnPreparedListener(this);
-        mMediaPlayer.setOnVideoSizeChangedListener(this);
+        
+        mMediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
+            @Override
+            public void onBufferingUpdate(MediaPlayer arg0, int percent) {
+                // Log.d(TAG, "onBufferingUpdate percent:" + percent);
+
+            }
+        });
+        
+        mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer arg0) {
+                Log.d(TAG, "onCompletion called");
+            }
+        });
+        
+        mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaplayer) {
+                Log.d(TAG, "onPrepared called");
+                mMediaPlayer.start();
+            }
+        });
+
+        mMediaPlayer.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener() {
+            @Override
+            public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
+            
+            }
+        });
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
-    }
-
-    public void onPrepared(MediaPlayer mediaplayer) {
-        Log.d(TAG, "onPrepared called");
-        mMediaPlayer.start();
-    }
-
-    public void onBufferingUpdate(MediaPlayer arg0, int percent) {
-        // Log.d(TAG, "onBufferingUpdate percent:" + percent);
-
-    }
-
-    public void onCompletion(MediaPlayer arg0) {
-        Log.d(TAG, "onCompletion called");
-    }
-
-    public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
-        
     }
 
 }
