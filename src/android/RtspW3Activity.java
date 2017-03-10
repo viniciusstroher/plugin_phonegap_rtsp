@@ -59,7 +59,8 @@ import io.vov.vitamio.MediaPlayer.OnBufferingUpdateListener;
 import io.vov.vitamio.MediaPlayer.OnCompletionListener;
 import io.vov.vitamio.MediaPlayer.OnVideoSizeChangedListener;
 
-public class RtspW3Activity extends Activity implements SurfaceHolder.Callback{
+public class RtspW3Activity extends Activity implements OnBufferingUpdateListener, OnCompletionListener, OnPreparedListener, OnVideoSizeChangedListener, SurfaceHolder.Callback {
+{
     private static final String TAG = "MediaPlayerDemo";
 
     private String link_rtsp;
@@ -106,50 +107,64 @@ public class RtspW3Activity extends Activity implements SurfaceHolder.Callback{
         holder.addCallback(this);
         holder.setFormat(PixelFormat.RGBA_8888); 
 
-        
-
-    }
-
-    public void surfaceCreated(SurfaceHolder holder) {
-        Log.d(TAG, "surfaceCreated called");
-        link_rtsp = getIntent().getStringExtra("LINK_RTSP");
-        
         mMediaPlayer = new MediaPlayer(this);
         mMediaPlayer.setDataSource(link_rtsp);
-        mMediaPlayer.setDisplay(holder);
+        mMediaPlayer.setDisplay(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.setPlaybackSpeed(1.0f);
+            }
+        });
 
         mMediaPlayer.prepareAsync();
         
-        mMediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
+        mMediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnPreparedListener() {
             @Override
-            public void onBufferingUpdate(MediaPlayer arg0, int percent) {
-                // Log.d(TAG, "onBufferingUpdate percent:" + percent);
-
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.setPlaybackSpeed(1.0f);
             }
         });
         
-        mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+        mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnPreparedListener() {
             @Override
-            public void onCompletion(MediaPlayer arg0) {
-                Log.d(TAG, "onCompletion called");
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.setPlaybackSpeed(1.0f);
             }
         });
         
         mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
-            public void onPrepared(MediaPlayer mediaplayer) {
-                Log.d(TAG, "onPrepared called");
-                mMediaPlayer.start();
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.setPlaybackSpeed(1.0f);
             }
         });
 
         mMediaPlayer.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener() {
             @Override
-            public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
-            
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.setPlaybackSpeed(1.0f);
             }
         });
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
     }
+
+    public void onPrepared(MediaPlayer mediaplayer) {
+        Log.d(TAG, "onPrepared called");
+        mMediaPlayer.start();
+    }
+
+    public void onBufferingUpdate(MediaPlayer arg0, int percent) {
+        // Log.d(TAG, "onBufferingUpdate percent:" + percent);
+
+    }
+
+    public void onCompletion(MediaPlayer arg0) {
+        Log.d(TAG, "onCompletion called");
+    }
+
+    public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
+        
+    }
+
 }
