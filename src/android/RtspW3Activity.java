@@ -108,12 +108,7 @@ public class RtspW3Activity extends Activity{
 
         mMediaPlayer = new MediaPlayer(this);
         mMediaPlayer.setDataSource(link_rtsp);
-        mMediaPlayer.setDisplay(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                mediaPlayer.setPlaybackSpeed(1.0f);
-            }
-        });
+        mMediaPlayer.setDisplay(holder);
 
         mMediaPlayer.prepareAsync();
         
