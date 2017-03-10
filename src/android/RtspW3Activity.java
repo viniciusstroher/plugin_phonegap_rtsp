@@ -133,17 +133,21 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
     }
 
     public void surfaceCreated(SurfaceHolder holder) {
-        
-        mMediaPlayer = new MediaPlayer(this);
-        mMediaPlayer.setDataSource(link_rtsp);
-        mMediaPlayer.setDisplay(holder);
-        mMediaPlayer.prepareAsync();
-        mMediaPlayer.setOnBufferingUpdateListener(this);
-        mMediaPlayer.setOnCompletionListener(this);
-        mMediaPlayer.setOnPreparedListener(this);
-        mMediaPlayer.setOnVideoSizeChangedListener(this);
+        try{
+            mMediaPlayer = new MediaPlayer(this);
+            mMediaPlayer.setDataSource(link_rtsp);
+            mMediaPlayer.setDisplay(holder);
+            mMediaPlayer.prepareAsync();
 
-        setVolumeControlStream(AudioManager.STREAM_MUSIC);
+            mMediaPlayer.setOnBufferingUpdateListener(this);
+            mMediaPlayer.setOnCompletionListener(this);
+            mMediaPlayer.setOnPreparedListener(this);
+            mMediaPlayer.setOnVideoSizeChangedListener(this);
+
+            setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        } catch (Exception e) {
+            Log.e(TAG, "error: " + e.getMessage(), e);
+        }
     }
 
 
