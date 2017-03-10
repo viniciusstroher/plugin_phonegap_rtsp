@@ -60,6 +60,8 @@ import io.vov.vitamio.MediaPlayer.OnCompletionListener;
 import io.vov.vitamio.MediaPlayer.OnVideoSizeChangedListener;
 
 public class RtspW3Activity extends Activity{
+    private static final String TAG = "MediaPlayerDemo";
+
     private String link_rtsp;
     private FakeR fakeR;
     private VideoView videoView;
