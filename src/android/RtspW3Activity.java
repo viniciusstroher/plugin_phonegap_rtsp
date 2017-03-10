@@ -62,7 +62,7 @@ import io.vov.vitamio.MediaPlayer.OnVideoSizeChangedListener;
 public class RtspW3Activity extends Activity implements OnBufferingUpdateListener, OnCompletionListener, OnPreparedListener, OnVideoSizeChangedListener, SurfaceHolder.Callback {
 {
 
-    private String link_rtsp;
+    public String link_rtsp;
     private FakeR fakeR;
     private VideoView videoView;
     private MediaController mController;
