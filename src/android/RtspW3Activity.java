@@ -48,11 +48,25 @@ import io.vov.vitamio.widget.VideoView;
 
 import org.apache.cordova.rtspw3.FakeR;
 
+import android.media.AudioManager;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+import android.widget.Toast;
+
+import io.vov.vitamio.MediaPlayer.OnBufferingUpdateListener;
+import io.vov.vitamio.MediaPlayer.OnCompletionListener;
+import io.vov.vitamio.MediaPlayer.OnVideoSizeChangedListener;
+
 public class RtspW3Activity extends Activity{
     private String link_rtsp;
     private FakeR fakeR;
     private VideoView videoView;
     private MediaController mController;
+
+
+    private MediaPlayer mMediaPlayer;
+    private SurfaceView mPreview;
+    private SurfaceHolder holder;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,7 +81,7 @@ public class RtspW3Activity extends Activity{
         if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this)){
             return;
         }
-        videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
+        /*videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
 
         
 
@@ -84,7 +98,28 @@ public class RtspW3Activity extends Activity{
             public void onPrepared(MediaPlayer mediaPlayer) {
                 mediaPlayer.setPlaybackSpeed(1.0f);
             }
-        });
+        });*/
+
+        mPreview = (SurfaceView) findViewById(fakeR.getId("id", "videoview"));
+        holder = mPreview.getHolder();
+        holder.addCallback(this);
+        holder.setFormat(PixelFormat.RGBA_8888); 
+
+        mMediaPlayer = new MediaPlayer(this);
+        mMediaPlayer.setDataSource(link_rtsp);
+        mMediaPlayer.setDisplay(holder);
+        mMediaPlayer.prepareAsync();
+        mMediaPlayer.setOnBufferingUpdateListener(this);
+        mMediaPlayer.setOnCompletionListener(this);
+        mMediaPlayer.setOnPreparedListener(this);
+        mMediaPlayer.setOnVideoSizeChangedListener(this);
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
+
+    }
+
+    public void onPrepared(MediaPlayer mediaplayer) {
+        Log.d(TAG, "onPrepared called");
+        mMediaPlayer.start();
     }
 
 }
