@@ -53,6 +53,7 @@ import android.media.AudioManager;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.Toast;
+import android.util.Log;
 
 import io.vov.vitamio.MediaPlayer.OnBufferingUpdateListener;
 import io.vov.vitamio.MediaPlayer.OnCompletionListener;
@@ -121,6 +122,19 @@ public class RtspW3Activity extends Activity{
     public void onPrepared(MediaPlayer mediaplayer) {
         Log.d(TAG, "onPrepared called");
         mMediaPlayer.start();
+    }
+
+    public void onBufferingUpdate(MediaPlayer arg0, int percent) {
+        // Log.d(TAG, "onBufferingUpdate percent:" + percent);
+
+    }
+
+    public void onCompletion(MediaPlayer arg0) {
+        Log.d(TAG, "onCompletion called");
+    }
+
+    public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
+        
     }
 
 }
