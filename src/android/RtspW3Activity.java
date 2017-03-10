@@ -108,9 +108,7 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
 
         mMediaPlayer = new MediaPlayer(this);
         mMediaPlayer.setDataSource(link_rtsp);
-        mMediaPlayer.setDisplay(new MediaPlayer.OnPreparedListener() {
-            
-        });
+        mMediaPlayer.setDisplay(this);
 
         mMediaPlayer.prepareAsync();
         
