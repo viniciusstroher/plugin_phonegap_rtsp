@@ -61,7 +61,6 @@ import io.vov.vitamio.MediaPlayer.OnVideoSizeChangedListener;
 
 public class RtspW3Activity extends Activity implements OnBufferingUpdateListener, OnCompletionListener, OnPreparedListener, OnVideoSizeChangedListener, SurfaceHolder.Callback {
 {
-    public static final String TAG = "MediaPlayerDemo";
 
     private String link_rtsp;
     private FakeR fakeR;
@@ -150,17 +149,17 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
     }
 
     public void onPrepared(MediaPlayer mediaplayer) {
-        Log.d(TAG, "onPrepared called");
+        Log.d("TAG", "onPrepared called");
         mMediaPlayer.start();
     }
 
     public void onBufferingUpdate(MediaPlayer arg0, int percent) {
-        // Log.d(TAG, "onBufferingUpdate percent:" + percent);
+        // Log.d("TAG", "onBufferingUpdate percent:" + percent);
 
     }
 
     public void onCompletion(MediaPlayer arg0) {
-        Log.d(TAG, "onCompletion called");
+        Log.d("TAG", "onCompletion called");
     }
 
     public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
