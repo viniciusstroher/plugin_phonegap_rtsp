@@ -103,54 +103,57 @@ public class RtspW3Activity extends Activity{
 
         mPreview = (SurfaceView) findViewById(fakeR.getId("id", "videoview"));
         holder = mPreview.getHolder();
-        holder.addCallback(this);
+        holder.addCallback(new SurfaceHolder.Callback(){
+            @Override
+            public void surfaceCreated(SurfaceHolder holder) {
+                Log.d(TAG, "surfaceCreated called");
+                link_rtsp = getIntent().getStringExtra("LINK_RTSP");
+                
+                mMediaPlayer = new MediaPlayer(this);
+                mMediaPlayer.setDataSource(link_rtsp);
+                mMediaPlayer.setDisplay(holder);
+
+                mMediaPlayer.prepareAsync();
+                
+                mMediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
+                    @Override
+                    public void onBufferingUpdate(MediaPlayer arg0, int percent) {
+                        // Log.d(TAG, "onBufferingUpdate percent:" + percent);
+
+                    }
+                });
+                
+                mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer arg0) {
+                        Log.d(TAG, "onCompletion called");
+                    }
+                });
+                
+                mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    @Override
+                    public void onPrepared(MediaPlayer mediaplayer) {
+                        Log.d(TAG, "onPrepared called");
+                        mMediaPlayer.start();
+                    }
+                });
+
+                mMediaPlayer.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener() {
+                    @Override
+                    public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
+                    
+                    }
+                });
+                setVolumeControlStream(AudioManager.STREAM_MUSIC);
+
+            }
+
+        });
         holder.setFormat(PixelFormat.RGBA_8888); 
 
         
 
     }
 
-    @Override
-    public void surfaceCreated(SurfaceHolder holder) {
-        Log.d(TAG, "surfaceCreated called");
-        link_rtsp = getIntent().getStringExtra("LINK_RTSP");
-        
-        mMediaPlayer = new MediaPlayer(this);
-        mMediaPlayer.setDataSource(link_rtsp);
-        mMediaPlayer.setDisplay(holder);
-
-        mMediaPlayer.prepareAsync();
-        
-        mMediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
-            @Override
-            public void onBufferingUpdate(MediaPlayer arg0, int percent) {
-                // Log.d(TAG, "onBufferingUpdate percent:" + percent);
-
-            }
-        });
-        
-        mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer arg0) {
-                Log.d(TAG, "onCompletion called");
-            }
-        });
-        
-        mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaplayer) {
-                Log.d(TAG, "onPrepared called");
-                mMediaPlayer.start();
-            }
-        });
-
-        mMediaPlayer.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener() {
-            @Override
-            public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
-            
-            }
-        });
-        setVolumeControlStream(AudioManager.STREAM_MUSIC);
-
-    }
+    
 }
