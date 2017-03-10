@@ -70,6 +70,13 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
     private SurfaceView mPreview;
     private SurfaceHolder holder;
 
+    private static final String MEDIA = "media";
+    private static final int LOCAL_AUDIO = 1;
+    private static final int STREAM_AUDIO = 2;
+    private static final int RESOURCES_AUDIO = 3;
+    private static final int LOCAL_VIDEO = 4;
+    private static final int STREAM_VIDEO = 5;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
