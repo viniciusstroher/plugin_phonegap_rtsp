@@ -103,7 +103,7 @@ public class RtspW3Activity extends Activity implements SurfaceHolder.Callback{
 
         mPreview = (SurfaceView) findViewById(fakeR.getId("id", "videoview"));
         holder = mPreview.getHolder();
-        holder.addCallback(this.surfaceCreated);
+        holder.addCallback(this);
         holder.setFormat(PixelFormat.RGBA_8888); 
 
         
