@@ -79,7 +79,7 @@ public class RtspW3Activity extends Activity{
         videoView.setMediaController(new MediaController(this));
 
         mediaPlayer = new MediaPlayer(this, true);
-        mediaPlayer.setDisplay(surfaceHolder);
+        mediaPlayer.setDisplay(this);
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         //mediaPlayer.setOnBufferingUpdateListener(this);
         //mediaPlayer.setOnPreparedListener(this);
