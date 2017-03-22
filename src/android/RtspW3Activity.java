@@ -90,7 +90,7 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
         if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this)){
             return;
         }
-        
+
         /*videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
 
         videoView.setVideoPath(link_rtsp);
@@ -110,7 +110,7 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
         mPreview = (SurfaceView) findViewById(fakeR.getId("id", "videoview"));
         holder = mPreview.getHolder();
         holder.addCallback(this);
-        holder.setFormat(PixelFormat.RGBA_8888); 
+        holder.setFormat(PixelFormat.RGB_565); 
 
     }
 
@@ -142,17 +142,17 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
 
     public void surfaceCreated(SurfaceHolder holder) {
         try{
-            mMediaPlayer = new MediaPlayer(this);
+            mMediaPlayer = new MediaPlayer(this,true);
             mMediaPlayer.setDataSource(link_rtsp);
             mMediaPlayer.setDisplay(holder);
-            mMediaPlayer.prepareAsync();
-
+            mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            
             mMediaPlayer.setOnBufferingUpdateListener(this);
             mMediaPlayer.setOnCompletionListener(this);
             mMediaPlayer.setOnPreparedListener(this);
             mMediaPlayer.setOnVideoSizeChangedListener(this);
 
-            setVolumeControlStream(AudioManager.STREAM_MUSIC);
+            //setVolumeControlStream(AudioManager.STREAM_MUSIC);
         } catch (Exception e) {
             Log.e("TAG", "error: " + e.getMessage(), e);
         }
