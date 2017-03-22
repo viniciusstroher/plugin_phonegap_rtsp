@@ -71,14 +71,19 @@ public class RtspW3Activity extends Activity{
         videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
         videoView.setVideoPath(link_rtsp);
         videoView.setVideoQuality(MediaPlayer.VIDEOQUALITY_HIGH);
+        videoView.setBufferSize(1024);
         videoView.requestFocus();
-        videoView.start();
+        
         videoView.setMediaController(new MediaController(this));
 
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                mediaPlayer.setPlaybackSpeed(1.0f);
+            public void onPrepared(MediaPlayer m) {
+                m.setPlaybackSpeed(1.0f);
+                m.setVolume(1f , 1f);
+                m.setLooping(false);
+                m.start();
+                //videoView.start();
             }
         });
     }
