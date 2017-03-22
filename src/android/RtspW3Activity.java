@@ -70,17 +70,20 @@ public class RtspW3Activity extends Activity{
 
         videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
         videoView.setVideoPath(link_rtsp);
-        videoView.setVideoQuality(MediaPlayer.VIDEOQUALITY_HIGH);
+        videoView.setVideoQuality(MediaPlayer.VIDEOQUALITY_LOW);
+        videoView.setAudioStreamType(AudioManager.STREAM_MUSIC);
         videoView.setBufferSize(1024);
         videoView.requestFocus();
         
         videoView.setMediaController(new MediaController(this));
 
+
+
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer m) {
                 //m.getMetadata();
-                m.setAudioStreamType(AudioManager.STREAM_MUSIC);
+               
                 m.setPlaybackSpeed(1.0f);
                 m.setVolume(1f , 1f);
                 m.setLooping(false);
