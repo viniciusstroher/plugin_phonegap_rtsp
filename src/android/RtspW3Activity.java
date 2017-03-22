@@ -79,6 +79,7 @@ public class RtspW3Activity extends Activity{
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer m) {
+                m.getMetadata();
                 m.setPlaybackSpeed(1.0f);
                 m.setVolume(1f , 1f);
                 m.setLooping(false);
