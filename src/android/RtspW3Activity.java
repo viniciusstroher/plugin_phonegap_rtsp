@@ -140,6 +140,7 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
         Log.d("TAG", "surfaceChanged called");
     }
 
+    @Override
     public void surfaceCreated(SurfaceHolder holder) {
         try{
             mMediaPlayer = new MediaPlayer(this,true);
