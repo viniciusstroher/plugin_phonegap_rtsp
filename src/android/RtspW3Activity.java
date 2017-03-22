@@ -80,9 +80,11 @@ public class RtspW3Activity extends Activity{
             @Override
             public void onPrepared(MediaPlayer m) {
                 //m.getMetadata();
+                m.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 m.setPlaybackSpeed(1.0f);
                 m.setVolume(1f , 1f);
                 m.setLooping(false);
+                m.prepareAsync();
                 m.start();
                 //videoView.start();
             }
