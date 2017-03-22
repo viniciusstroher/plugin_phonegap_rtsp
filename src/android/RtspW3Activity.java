@@ -72,7 +72,7 @@ public class RtspW3Activity extends Activity{
         videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
         videoView.setVideoPath(link_rtsp);
         videoView.setVideoQuality(MediaPlayer.VIDEOQUALITY_LOW);
-        videoView.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        //videoView.setAudioStreamType(AudioManager.STREAM_MUSIC);
         videoView.setBufferSize(1024);
         
         
@@ -81,8 +81,8 @@ public class RtspW3Activity extends Activity{
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setDisplay(surfaceHolder);
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        mediaPlayer.setOnBufferingUpdateListener(this);
-        mediaPlayer.setOnPreparedListener(this);
+        //mediaPlayer.setOnBufferingUpdateListener(this);
+        //mediaPlayer.setOnPreparedListener(this);
 
 
         mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
