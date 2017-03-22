@@ -43,7 +43,7 @@ import android.media.MediaPlayer.OnPreparedListener;
 import io.vov.vitamio.LibsChecker;
 import io.vov.vitamio.MediaPlayer.OnPreparedListener;
 import io.vov.vitamio.MediaPlayer;
-import io.vov.vitamio.widget.MediaController;
+
 import io.vov.vitamio.widget.VideoView;
 
 import org.apache.cordova.rtspw3.FakeR;
@@ -55,10 +55,16 @@ import android.view.SurfaceView;
 import android.widget.Toast;
 import android.util.Log;
 
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnBufferingUpdateListener;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.media.MediaPlayer.OnPreparedListener;
+/*
+import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.MediaPlayer.OnBufferingUpdateListener;
 import io.vov.vitamio.MediaPlayer.OnCompletionListener;
 import io.vov.vitamio.MediaPlayer.OnVideoSizeChangedListener;
-
+*/
 public class RtspW3Activity extends Activity implements OnBufferingUpdateListener, OnCompletionListener, OnPreparedListener, OnVideoSizeChangedListener, SurfaceHolder.Callback {
 
     private String link_rtsp;
