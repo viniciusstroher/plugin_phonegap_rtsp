@@ -58,7 +58,8 @@ import android.util.Log;
 import io.vov.vitamio.MediaPlayer.OnBufferingUpdateListener;
 import io.vov.vitamio.MediaPlayer.OnCompletionListener;
 import io.vov.vitamio.MediaPlayer.OnVideoSizeChangedListener;
-
+import java.util.Collections; 
+import java.util.HashMap; 
 public class RtspW3Activity extends Activity implements OnBufferingUpdateListener, OnCompletionListener, OnPreparedListener, OnVideoSizeChangedListener, SurfaceHolder.Callback {
 
     private String link_rtsp;
@@ -142,9 +143,11 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
     public void surfaceCreated(SurfaceHolder holder) {
         try{
             mMediaPlayer = new MediaPlayer(this);
-            mMediaPlayer.setDataSource(link_rtsp);
+            HashMap<String, String> options = new HashMap<String, String>();
+            options.put("rtsp_transport", "tcp"); // udp
+
+            mMediaPlayer.setDataSource(link_rtsp,options);
             mMediaPlayer.setDisplay(holder);
-            mMediaPlayer.prepareAsync();
 
             mMediaPlayer.setOnBufferingUpdateListener(this);
             mMediaPlayer.setOnCompletionListener(this);
