@@ -53,6 +53,7 @@ public class RtspW3Activity extends Activity{
     private FakeR fakeR;
     private VideoView videoView;
     private MediaController mController;
+    private MediaPlayer mediaPlayer;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,13 +74,18 @@ public class RtspW3Activity extends Activity{
         videoView.setVideoQuality(MediaPlayer.VIDEOQUALITY_LOW);
         videoView.setAudioStreamType(AudioManager.STREAM_MUSIC);
         videoView.setBufferSize(1024);
-        videoView.requestFocus();
+        
         
         videoView.setMediaController(new MediaController(this));
 
+        mediaPlayer = new MediaPlayer();
+        mediaPlayer.setDisplay(surfaceHolder);
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        mediaPlayer.setOnBufferingUpdateListener(this);
+        mediaPlayer.setOnPreparedListener(this);
 
 
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+        mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer m) {
                 //m.getMetadata();
@@ -92,6 +98,9 @@ public class RtspW3Activity extends Activity{
                 //videoView.start();
             }
         });
+
+        mediaController.setAnchorView(videoView);
+        videoView.requestFocus();
     }
 
 }
