@@ -41,7 +41,9 @@ import android.media.MediaPlayer.OnPreparedListener;
 */
 
 import io.vov.vitamio.LibsChecker;
-
+import io.vov.vitamio.MediaPlayer.OnPreparedListener;
+import io.vov.vitamio.MediaPlayer;
+import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
 
 import org.apache.cordova.rtspw3.FakeR;
@@ -53,18 +55,10 @@ import android.view.SurfaceView;
 import android.widget.Toast;
 import android.util.Log;
 
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnBufferingUpdateListener;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.media.MediaPlayer.OnPreparedListener;
-
-import io.vov.vitamio.widget.MediaController;
-/*
-import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.MediaPlayer.OnBufferingUpdateListener;
 import io.vov.vitamio.MediaPlayer.OnCompletionListener;
 import io.vov.vitamio.MediaPlayer.OnVideoSizeChangedListener;
-*/
+
 public class RtspW3Activity extends Activity implements OnBufferingUpdateListener, OnCompletionListener, OnPreparedListener, OnVideoSizeChangedListener, SurfaceHolder.Callback {
 
     private String link_rtsp;
@@ -96,7 +90,6 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
         if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this)){
             return;
         }
-
         /*videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
 
         videoView.setVideoPath(link_rtsp);
@@ -116,7 +109,7 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
         mPreview = (SurfaceView) findViewById(fakeR.getId("id", "videoview"));
         holder = mPreview.getHolder();
         holder.addCallback(this);
-        holder.setFormat(PixelFormat.RGB_565); 
+        holder.setFormat(PixelFormat.RGBA_8888); 
 
     }
 
@@ -148,17 +141,17 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
 
     public void surfaceCreated(SurfaceHolder holder) {
         try{
-            mMediaPlayer = new MediaPlayer();
+            mMediaPlayer = new MediaPlayer(this);
             mMediaPlayer.setDataSource(link_rtsp);
             mMediaPlayer.setDisplay(holder);
-            mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            
+            mMediaPlayer.prepareAsync();
+
             mMediaPlayer.setOnBufferingUpdateListener(this);
             mMediaPlayer.setOnCompletionListener(this);
             mMediaPlayer.setOnPreparedListener(this);
             mMediaPlayer.setOnVideoSizeChangedListener(this);
 
-            //setVolumeControlStream(AudioManager.STREAM_MUSIC);
+            setVolumeControlStream(AudioManager.STREAM_MUSIC);
         } catch (Exception e) {
             Log.e("TAG", "error: " + e.getMessage(), e);
         }
