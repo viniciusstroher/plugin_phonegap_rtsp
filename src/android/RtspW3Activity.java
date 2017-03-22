@@ -41,8 +41,6 @@ import android.media.MediaPlayer.OnPreparedListener;
 */
 
 import io.vov.vitamio.LibsChecker;
-import io.vov.vitamio.MediaPlayer.OnPreparedListener;
-import io.vov.vitamio.MediaPlayer;
 
 import io.vov.vitamio.widget.VideoView;
 
