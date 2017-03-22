@@ -57,6 +57,8 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnBufferingUpdateListener;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnPreparedListener;
+
+import io.vov.vitamio.widget.MediaController;
 /*
 import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.MediaPlayer.OnBufferingUpdateListener;
@@ -144,7 +146,6 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
         Log.d("TAG", "surfaceChanged called");
     }
 
-    @Override
     public void surfaceCreated(SurfaceHolder holder) {
         try{
             mMediaPlayer = new MediaPlayer(this,true);
