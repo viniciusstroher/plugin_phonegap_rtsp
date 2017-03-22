@@ -79,7 +79,7 @@ public class RtspW3Activity extends Activity{
         videoView.setMediaController(new MediaController(this));
 
         mediaPlayer = new MediaPlayer(this, true);
-        mediaPlayer.setDisplay(this);
+        mediaPlayer.setDisplay(videoView);
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         //mediaPlayer.setOnBufferingUpdateListener(this);
         //mediaPlayer.setOnPreparedListener(this);
@@ -99,7 +99,7 @@ public class RtspW3Activity extends Activity{
             }
         });
 
-        mediaController.setAnchorView(videoView);
+        mediaPlaye.rsetAnchorView(videoView);
         videoView.requestFocus();
     }
 
