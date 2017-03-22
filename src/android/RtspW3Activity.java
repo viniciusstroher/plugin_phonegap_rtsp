@@ -45,7 +45,7 @@ import io.vov.vitamio.MediaPlayer.OnPreparedListener;
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
-
+import android.media.AudioManager;
 import org.apache.cordova.rtspw3.FakeR;
 
 public class RtspW3Activity extends Activity{
