@@ -148,7 +148,7 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
 
     public void surfaceCreated(SurfaceHolder holder) {
         try{
-            mMediaPlayer = new MediaPlayer(this,true);
+            mMediaPlayer = new MediaPlayer();
             mMediaPlayer.setDataSource(link_rtsp);
             mMediaPlayer.setDisplay(holder);
             mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
