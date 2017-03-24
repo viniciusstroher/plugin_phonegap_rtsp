@@ -1,3 +1,4 @@
+
 package org.apache.cordova.rtspw3;
 
 import android.app.Dialog;
@@ -48,35 +49,12 @@ import io.vov.vitamio.widget.VideoView;
 
 import org.apache.cordova.rtspw3.FakeR;
 
-import android.graphics.PixelFormat;
-import android.media.AudioManager;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.widget.Toast;
-import android.util.Log;
-
-import io.vov.vitamio.MediaPlayer.OnBufferingUpdateListener;
-import io.vov.vitamio.MediaPlayer.OnCompletionListener;
-import io.vov.vitamio.MediaPlayer.OnVideoSizeChangedListener;
-
-public class RtspW3Activity extends Activity implements OnBufferingUpdateListener, OnCompletionListener, OnPreparedListener, OnVideoSizeChangedListener, SurfaceHolder.Callback {
-
+public class RtspW3Activity extends Activity{
     private String link_rtsp;
     private FakeR fakeR;
     private VideoView videoView;
     private MediaController mController;
 
-    private MediaPlayer mMediaPlayer;
-    private SurfaceView mPreview;
-    private SurfaceHolder holder;
-
-    private static final String MEDIA = "media";
-    private static final int LOCAL_AUDIO = 1;
-    private static final int STREAM_AUDIO = 2;
-    private static final int RESOURCES_AUDIO = 3;
-    private static final int LOCAL_VIDEO = 4;
-    private static final int STREAM_VIDEO = 5;
-    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,76 +64,19 @@ public class RtspW3Activity extends Activity implements OnBufferingUpdateListene
         
         //PEGA PARAMETRO
         link_rtsp = getIntent().getStringExtra("LINK_RTSP");
-        //inicializa plugin
-        if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this)){
-            return;
-        }
-        /*videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
 
+        videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
+        
         videoView.setVideoPath(link_rtsp);
-        videoView.setVideoQuality(MediaPlayer.VIDEOQUALITY_HIGH);
-        //videoView.setBufferSize(2048);
-        videoView.requestFocus();
-        videoView.start();
         videoView.setMediaController(new MediaController(this));
-
+        videoView.play();
+         
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
                 mediaPlayer.setPlaybackSpeed(1.0f);
             }
-        });*/
-
-        mPreview = (SurfaceView) findViewById(fakeR.getId("id", "videoview"));
-        holder = mPreview.getHolder();
-        holder.addCallback(this);
-        holder.setFormat(PixelFormat.RGBA_8888); 
-
+        });
     }
-
-    public void onPrepared(MediaPlayer mediaplayer) {
-        Log.d("TAG", "onPrepared called");
-        mMediaPlayer.start();
-    }
-
-    public void onBufferingUpdate(MediaPlayer arg0, int percent) {
-        // Log.d("TAG", "onBufferingUpdate percent:" + percent);
-
-    }
-
-    public void onCompletion(MediaPlayer arg0) {
-        Log.d("TAG", "onCompletion called");
-    }
-
-    public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
-        
-    }
-
-    public void surfaceDestroyed(SurfaceHolder surfaceholder) {
-        Log.d("TAG", "surfaceDestroyed called");
-    }
-
-    public void surfaceChanged(SurfaceHolder surfaceholder, int i, int j, int k) {
-        Log.d("TAG", "surfaceChanged called");
-    }
-
-    public void surfaceCreated(SurfaceHolder holder) {
-        try{
-            mMediaPlayer = new MediaPlayer(this,true);
-            mMediaPlayer.setDataSource(link_rtsp);
-            mMediaPlayer.setDisplay(holder);
-            mMediaPlayer.prepareAsync();
-
-            mMediaPlayer.setOnBufferingUpdateListener(this);
-            mMediaPlayer.setOnCompletionListener(this);
-            mMediaPlayer.setOnPreparedListener(this);
-            mMediaPlayer.setOnVideoSizeChangedListener(this);
-
-            setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        } catch (Exception e) {
-            Log.e("TAG", "error: " + e.getMessage(), e);
-        }
-    }
-
 
 }

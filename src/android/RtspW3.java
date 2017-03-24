@@ -1,4 +1,3 @@
-
 package org.apache.cordova.rtspw3;
 
 import android.app.Dialog;
@@ -28,55 +27,120 @@ import org.apache.cordova.CordovaWebView;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import android.app.Activity;
-import android.os.Bundle;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import android.content.Intent;
-import android.util.Log;
 
-import android.net.Uri;
-import android.view.Window;
-/*import android.widget.MediaController;
-import android.widget.VideoView;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-*/
+public class RtspW3 extends CordovaPlugin {
+    private static final String LOG_TAG = "RtspW3";
 
-import io.vov.vitamio.LibsChecker;
-import io.vov.vitamio.MediaPlayer.OnPreparedListener;
-import io.vov.vitamio.MediaPlayer;
-import io.vov.vitamio.widget.MediaController;
-import io.vov.vitamio.widget.VideoView;
+    private CallbackContext callbackContext;
+    private JSONObject params;
 
-import org.apache.cordova.rtspw3.FakeR;
+    /**
+     * Remember last device orientation to detect orientation changes.
+     */
+    private int orientation;
 
-public class RtspW3Activity extends Activity{
-    private String link_rtsp;
-    private FakeR fakeR;
-    private VideoView videoView;
-    private MediaController mController;
+    // Helper to be compile-time compatible with both Cordova 3.x and 4.x.
+    private View getView() {
+        try {
+            return (View)webView.getClass().getMethod("getView").invoke(webView);
+        } catch (Exception e) {
+            return (View)webView;
+        }
+    }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void pluginInitialize() {
         
-        fakeR = new FakeR(this);
-        setContentView(fakeR.getId("layout", "rtsp_w3_activity"));
-        
-        //PEGA PARAMETRO
-        link_rtsp = getIntent().getStringExtra("LINK_RTSP");
-
-        videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
-        
-        videoView.setVideoPath(link_rtsp);
-        videoView.setMediaController(new MediaController(this));
-        videoView.play();
-         
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+        // Make WebView invisible while loading URL
+        // CB-11326 Ensure we're calling this on UI thread
+        /*cordova.getActivity().runOnUiThread(new Runnable() {
             @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                mediaPlayer.setPlaybackSpeed(1.0f);
+            public void run() {
+                getView().setVisibility(View.INVISIBLE);
             }
-        });
+        });*/
+
+    }
+
+
+    @Override
+    public void onPause(boolean multitasking) {
+
+    }
+
+    @Override
+    public void onDestroy() {
+
+    }
+
+
+    //COMANDO EXECUTE
+    //AQUI FICAO AS ACOES
+    @Override
+    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+        /* EXEMPLOS NAO APAGAR
+        if (action.equals("hide")) {
+            cordova.getActivity().runOnUiThread(new Runnable() {
+                public void run() {
+                    webView.postMessage("splashscreen", "hide");
+                }
+            });
+        } else if (action.equals("show")) {
+            cordova.getActivity().runOnUiThread(new Runnable() {
+                public void run() {
+                    webView.postMessage("splashscreen", "show");
+                }
+            });
+        } else {
+            return false;
+        }*/
+
+        if (action.equals("abrirRtsp")) {
+            //pega parametros do js
+            this.params = args.getJSONObject(0);
+            Intent intent = new Intent(cordova.getActivity(), RtspW3Activity.class);
+
+            //LINK PARA ENVIAR PARA A ACTIVITY
+            intent.putExtra("LINK_RTSP", this.params.getString("link"));
+
+            if (this.cordova != null) {
+                this.cordova.startActivityForResult((CordovaPlugin) this, intent, 0);
+            }
+        }
+
+        callbackContext.success();
+        return true;
+    }
+
+
+    //ENVIO DE MENSAGEMS A CLASSE
+    @Override
+    public Object onMessage(String id, Object data) {
+        /*
+        if ("splashscreen".equals(id)) {
+            if ("hide".equals(data.toString())) {
+                this.removeSplashScreen(false);
+            } else {
+                this.showSplashScreen(false);
+            }
+        } else if ("spinner".equals(id)) {
+            if ("stop".equals(data.toString())) {
+                getView().setVisibility(View.VISIBLE);
+            }
+        } else if ("onReceivedError".equals(id)) {
+            this.spinnerStop();
+        }*/
+
+        return null;
+    }
+
+    // Don't add @Override so that plugin still compiles on 3.x.x for a while
+    public void onConfigurationChanged(Configuration newConfig) {
+       
     }
 
 }
