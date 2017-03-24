@@ -1,4 +1,4 @@
-package org.apache.cordova.rtspw3;
+/*package org.apache.cordova.rtspw3;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -41,7 +41,7 @@ public class RtspW3 extends CordovaPlugin {
     /**
      * Remember last device orientation to detect orientation changes.
      */
-    private int orientation;
+   /* private int orientation;
 
     // Helper to be compile-time compatible with both Cordova 3.x and 4.x.
     private View getView() {
@@ -63,7 +63,7 @@ public class RtspW3 extends CordovaPlugin {
                 getView().setVisibility(View.INVISIBLE);
             }
         });*/
-
+/*
     }
 
 
@@ -98,7 +98,7 @@ public class RtspW3 extends CordovaPlugin {
         } else {
             return false;
         }*/
-
+/*
         if (action.equals("abrirRtsp")) {
             //pega parametros do js
             this.params = args.getJSONObject(0);
@@ -118,7 +118,7 @@ public class RtspW3 extends CordovaPlugin {
 
 
     //ENVIO DE MENSAGEMS A CLASSE
-    @Override
+    /*@Override
     public Object onMessage(String id, Object data) {
         /*
         if ("splashscreen".equals(id)) {
@@ -135,12 +135,93 @@ public class RtspW3 extends CordovaPlugin {
             this.spinnerStop();
         }*/
 
-        return null;
+    /*    return null;
     }
 
     // Don't add @Override so that plugin still compiles on 3.x.x for a while
-    public void onConfigurationChanged(Configuration newConfig) {
+   /* public void onConfigurationChanged(Configuration newConfig) {
        
+    }
+
+}*/
+package org.apache.cordova.rtspw3;
+
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
+import android.view.Display;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+
+import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.CordovaWebView;
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.content.Intent;
+import android.util.Log;
+
+import android.net.Uri;
+import android.view.Window;
+/*import android.widget.MediaController;
+import android.widget.VideoView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+*/
+
+import io.vov.vitamio.LibsChecker;
+import io.vov.vitamio.MediaPlayer.OnPreparedListener;
+import io.vov.vitamio.MediaPlayer;
+import io.vov.vitamio.widget.MediaController;
+import io.vov.vitamio.widget.VideoView;
+
+import org.apache.cordova.rtspw3.FakeR;
+
+public class RtspW3Activity extends Activity{
+    private String link_rtsp;
+    private FakeR fakeR;
+    private VideoView videoView;
+    private MediaController mController;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        fakeR = new FakeR(this);
+        setContentView(fakeR.getId("layout", "rtsp_w3_activity"));
+        
+        //PEGA PARAMETRO
+        link_rtsp = getIntent().getStringExtra("LINK_RTSP");
+
+        videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
+        
+        videoView.setVideoPath(link_rtsp);
+        videoView.setMediaController(new MediaController(this));
+        videoView.play();
+         
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.setPlaybackSpeed(1.0f);
+            }
+        });
     }
 
 }
