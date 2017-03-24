@@ -69,7 +69,7 @@ public class RtspW3Activity extends Activity{
         
         videoView.setVideoPath(link_rtsp);
         videoView.setMediaController(new MediaController(this));
-        videoView.play();
+        videoView.start();
          
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
