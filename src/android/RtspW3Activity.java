@@ -41,11 +41,7 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
 */
 
-import io.vov.vitamio.LibsChecker;
-import io.vov.vitamio.MediaPlayer.OnPreparedListener;
-import io.vov.vitamio.MediaPlayer;
-import io.vov.vitamio.widget.MediaController;
-import io.vov.vitamio.widget.VideoView;
+
 
 import org.apache.cordova.rtspw3.FakeR;
 
@@ -64,9 +60,7 @@ public class RtspW3Activity extends Activity{
         
         //PEGA PARAMETRO
         link_rtsp = getIntent().getStringExtra("LINK_RTSP");
-        if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this)){
-            return;
-        }
+        
         videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
         
         videoView.setVideoPath(link_rtsp);

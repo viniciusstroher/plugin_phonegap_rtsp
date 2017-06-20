@@ -54,15 +54,6 @@ public class RtspW3 extends CordovaPlugin {
 
     @Override
     protected void pluginInitialize() {
-        
-        // Make WebView invisible while loading URL
-        // CB-11326 Ensure we're calling this on UI thread
-        /*cordova.getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                getView().setVisibility(View.INVISIBLE);
-            }
-        });*/
 
     }
 
@@ -82,23 +73,7 @@ public class RtspW3 extends CordovaPlugin {
     //AQUI FICAO AS ACOES
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        /* EXEMPLOS NAO APAGAR
-        if (action.equals("hide")) {
-            cordova.getActivity().runOnUiThread(new Runnable() {
-                public void run() {
-                    webView.postMessage("splashscreen", "hide");
-                }
-            });
-        } else if (action.equals("show")) {
-            cordova.getActivity().runOnUiThread(new Runnable() {
-                public void run() {
-                    webView.postMessage("splashscreen", "show");
-                }
-            });
-        } else {
-            return false;
-        }*/
-
+    
         if (action.equals("abrirRtsp")) {
             //pega parametros do js
             this.params = args.getJSONObject(0);
@@ -120,21 +95,6 @@ public class RtspW3 extends CordovaPlugin {
     //ENVIO DE MENSAGEMS A CLASSE
     @Override
     public Object onMessage(String id, Object data) {
-        /*
-        if ("splashscreen".equals(id)) {
-            if ("hide".equals(data.toString())) {
-                this.removeSplashScreen(false);
-            } else {
-                this.showSplashScreen(false);
-            }
-        } else if ("spinner".equals(id)) {
-            if ("stop".equals(data.toString())) {
-                getView().setVisibility(View.VISIBLE);
-            }
-        } else if ("onReceivedError".equals(id)) {
-            this.spinnerStop();
-        }*/
-
         return null;
     }
 
