@@ -194,7 +194,7 @@ public class RtspW3Activity extends Activity{
             final IVLCVout vout = mMediaPlayer.getVLCVout();
             vout.setVideoView(mSurface);
             //vout.setSubtitlesView(mSurfaceSubtitles);
-            vout.addCallback(this);
+            //vout.addCallback(this);
             vout.attachViews();
 
             Media m = new Media(libvlc, media);
