@@ -231,7 +231,7 @@ public class RtspW3Activity extends Activity{
 
         @Override
         public void onEvent(MediaPlayer.Event event) {
-            Activity player = mOwner.get();
+            RtspW3Activity player = (RtspW3Activity)mOwner.get();
 
             switch(event.type) {
                 case MediaPlayer.Event.EndReached:
