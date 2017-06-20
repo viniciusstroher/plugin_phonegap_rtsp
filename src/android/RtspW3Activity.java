@@ -76,7 +76,7 @@ public class RtspW3Activity extends Activity implements IVLCVout.Callback, LibVL
     private MediaPlayer mMediaPlayer = null;
     private int mVideoWidth;
     private int mVideoHeight;
-    private final static int VideoSizeChan
+    private final static int VideoSizeChanged = -1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
