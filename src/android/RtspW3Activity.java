@@ -40,6 +40,19 @@ import android.widget.VideoView;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
 
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Toast;
+
+import org.videolan.libvlc.IVLCVout;
+import org.videolan.libvlc.LibVLC;
+import org.videolan.libvlc.Media;
+import org.videolan.libvlc.MediaPlayer;
+import org.videolan.libvlc.util.AndroidUtil;
+
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 
 import org.apache.cordova.rtspw3.FakeR;
