@@ -92,7 +92,7 @@ public class RtspW3Activity extends Activity{
         mSurface = (SurfaceView) findViewById(fakeR.getId("id", "surface"));
         
         holder = mSurface.getHolder();
-
+        createPlayer(link_rtsp);
     }
 
     @Override
@@ -104,7 +104,7 @@ public class RtspW3Activity extends Activity{
     @Override
     protected void onResume() {
         super.onResume();
-        createPlayer(mFilePath);
+        createPlayer(link_rtsp);
     }
 
     @Override
