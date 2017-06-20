@@ -252,7 +252,7 @@ public class RtspW3Activity extends Activity implements IVLCVout.Callback, LibVL
     private static class MyPlayerListener implements MediaPlayer.EventListener {
         private WeakReference<RtspW3Activity> mOwner;
 
-        public MyPlayerListener(VideoActivity owner) {
+        public MyPlayerListener(RtspW3Activity owner) {
             mOwner = new WeakReference<RtspW3Activity>(owner);
         }
 
