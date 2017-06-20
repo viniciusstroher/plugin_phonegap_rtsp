@@ -60,8 +60,14 @@ import org.apache.cordova.rtspw3.FakeR;
 public class RtspW3Activity extends Activity implements IVLCVout.Callback, LibVLC.HardwareAccelerationError{
     private String link_rtsp;
     private FakeR fakeR;
-    private VideoView videoView;
-    private MediaController mController;
+    
+    private SurfaceView mSurface;
+    private SurfaceHolder holder;
+
+    // media player
+    private LibVLC libvlc;
+    private MediaPlayer mMediaPlayer = null;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,18 +79,11 @@ public class RtspW3Activity extends Activity implements IVLCVout.Callback, LibVL
         //PEGA PARAMETRO
         link_rtsp = getIntent().getStringExtra("LINK_RTSP");
         
-        videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
+        //videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
+        mSurface = (SurfaceView) findViewById(fakeR.getId("id", "videoview"));
+        holder = mSurface.getHolder();
+
         
-        videoView.setVideoPath(link_rtsp);
-        videoView.setMediaController(new MediaController(this));
-        videoView.start();
-         
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                //mediaPlayer.setPlaybackSpeed(1.0f);
-            }
-        });
     }
 
 }
