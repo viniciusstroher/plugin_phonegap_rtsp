@@ -88,7 +88,9 @@ public class RtspW3Activity extends Activity{
         link_rtsp = getIntent().getStringExtra("LINK_RTSP");
         
         //videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
-        mSurface = (SurfaceView) findViewById(fakeR.getId("id", "videoview"));
+        //mSurface = (SurfaceView) findViewById(fakeR.getId("id", "videoview"));
+        mSurface = (SurfaceView) findViewById(fakeR.getId("id", "surface"));
+        
         holder = mSurface.getHolder();
 
     }
