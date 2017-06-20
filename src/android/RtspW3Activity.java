@@ -57,7 +57,7 @@ import java.util.ArrayList;
 
 import org.apache.cordova.rtspw3.FakeR;
 
-public class RtspW3Activity extends Activity{
+public class RtspW3Activity extends Activity implements IVLCVout.Callback, LibVLC.HardwareAccelerationError{
     private String link_rtsp;
     private FakeR fakeR;
     private VideoView videoView;
