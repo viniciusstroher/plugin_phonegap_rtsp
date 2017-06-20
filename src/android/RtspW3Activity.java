@@ -211,7 +211,7 @@ public class RtspW3Activity extends Activity{
             return;
         mMediaPlayer.stop();
         final IVLCVout vout = mMediaPlayer.getVLCVout();
-        vout.removeCallback(this);
+        //vout.removeCallback(this);
         vout.detachViews();
         holder = null;
         libvlc.release();
