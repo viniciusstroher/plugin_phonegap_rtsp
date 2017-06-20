@@ -61,13 +61,22 @@ public class RtspW3Activity extends Activity implements IVLCVout.Callback, LibVL
     private String link_rtsp;
     private FakeR fakeR;
     
+    public final static String TAG = "LibVLCAndroidSample/VideoActivity";
+
+    public final static String LOCATION = "com.compdigitec.libvlcandroidsample.VideoActivity.location";
+
+    private String mFilePath;
+
+    // display surface
     private SurfaceView mSurface;
     private SurfaceHolder holder;
 
     // media player
     private LibVLC libvlc;
     private MediaPlayer mMediaPlayer = null;
-
+    private int mVideoWidth;
+    private int mVideoHeight;
+    private final static int VideoSizeChan
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
