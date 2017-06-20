@@ -183,7 +183,7 @@ public class RtspW3Activity extends Activity{
             options.add("--audio-time-stretch"); // time stretching
             options.add("-vvv"); // verbosity
             libvlc = new LibVLC(options);
-            libvlc.setOnHardwareAccelerationError(this);
+            
             holder.setKeepScreenOn(true);
 
             // Create media player
@@ -219,6 +219,31 @@ public class RtspW3Activity extends Activity{
 
         mVideoWidth = 0;
         mVideoHeight = 0;
+    }
+
+    private static class MyPlayerListener implements MediaPlayer.EventListener {
+        private WeakReference<Activity> mOwner;
+
+        public MyPlayerListener(Activity owner) {
+            mOwner = new WeakReference<Activity>(owner);
+        }
+
+        @Override
+        public void onEvent(MediaPlayer.Event event) {
+            Activity player = mOwner.get();
+
+            switch(event.type) {
+                case MediaPlayer.Event.EndReached:
+                    Log.d(TAG, "MediaPlayerEndReached");
+                    player.releasePlayer();
+                    break;
+                case MediaPlayer.Event.Playing:
+                case MediaPlayer.Event.Paused:
+                case MediaPlayer.Event.Stopped:
+                default:
+                    break;
+            }
+        }
     }
 
 }
