@@ -56,7 +56,7 @@ import java.util.ArrayList;
 
 import org.apache.cordova.rtspw3.FakeR;
 
-public class RtspW3Activity extends Activity implements IVLCVout.Callback, LibVLC.HardwareAccelerationError{
+public class RtspW3Activity extends Activity{
     private String link_rtsp;
     private FakeR fakeR;
     
@@ -91,7 +91,6 @@ public class RtspW3Activity extends Activity implements IVLCVout.Callback, LibVL
         mSurface = (SurfaceView) findViewById(fakeR.getId("id", "videoview"));
         holder = mSurface.getHolder();
 
-        
     }
 
     @Override
@@ -220,66 +219,6 @@ public class RtspW3Activity extends Activity implements IVLCVout.Callback, LibVL
 
         mVideoWidth = 0;
         mVideoHeight = 0;
-    }
-
-    /*************
-     * Events
-     *************/
-
-    private MediaPlayer.EventListener mPlayerListener = new MyPlayerListener(this);
-
-    @Override
-    public void onNewLayout(IVLCVout vout, int width, int height, int visibleWidth, int visibleHeight, int sarNum, int sarDen) {
-        if (width * height == 0)
-            return;
-
-        // store video size
-        mVideoWidth = width;
-        mVideoHeight = height;
-        setSize(mVideoWidth, mVideoHeight);
-    }
-
-    @Override
-    public void onSurfacesCreated(IVLCVout vout) {
-
-    }
-
-    @Override
-    public void onSurfacesDestroyed(IVLCVout vout) {
-
-    }
-
-    private static class MyPlayerListener implements MediaPlayer.EventListener {
-        private WeakReference<RtspW3Activity> mOwner;
-
-        public MyPlayerListener(RtspW3Activity owner) {
-            mOwner = new WeakReference<RtspW3Activity>(owner);
-        }
-
-        @Override
-        public void onEvent(MediaPlayer.Event event) {
-            RtspW3Activity player = mOwner.get();
-
-            switch(event.type) {
-                case MediaPlayer.Event.EndReached:
-                    Log.d(TAG, "MediaPlayerEndReached");
-                    player.releasePlayer();
-                    break;
-                case MediaPlayer.Event.Playing:
-                case MediaPlayer.Event.Paused:
-                case MediaPlayer.Event.Stopped:
-                default:
-                    break;
-            }
-        }
-    }
-
-    @Override
-    public void eventHardwareAccelerationError() {
-        // Handle errors with hardware acceleration
-        Log.e(TAG, "Error with hardware acceleration");
-        this.releasePlayer();
-        Toast.makeText(this, "Error with hardware acceleration", Toast.LENGTH_LONG).show();
     }
 
 }
