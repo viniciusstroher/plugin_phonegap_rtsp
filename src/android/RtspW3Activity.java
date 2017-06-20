@@ -69,7 +69,7 @@ public class RtspW3Activity extends Activity{
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
-                mediaPlayer.setPlaybackSpeed(1.0f);
+                //mediaPlayer.setPlaybackSpeed(1.0f);
             }
         });
     }
