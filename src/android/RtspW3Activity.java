@@ -221,6 +221,7 @@ public class RtspW3Activity extends Activity{
         mVideoHeight = 0;
     }
 
+    private MediaPlayer.EventListener mPlayerListener = new MyPlayerListener(this);
     private static class MyPlayerListener implements MediaPlayer.EventListener {
         private WeakReference<Activity> mOwner;
 
