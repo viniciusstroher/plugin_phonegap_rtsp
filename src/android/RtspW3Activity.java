@@ -182,7 +182,7 @@ public class RtspW3Activity extends Activity{
             options.add("--aout=opensles");
             options.add("--audio-time-stretch"); // time stretching
             options.add("-vvv"); // verbosity
-            libvlc = new LibVLC(options);
+            libvlc = new LibVLC(getApplicationContext(),options);
             
             holder.setKeepScreenOn(true);
 
