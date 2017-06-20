@@ -250,15 +250,15 @@ public class RtspW3Activity extends Activity implements IVLCVout.Callback, LibVL
     }
 
     private static class MyPlayerListener implements MediaPlayer.EventListener {
-        private WeakReference<VideoActivity> mOwner;
+        private WeakReference<RtspW3Activity> mOwner;
 
         public MyPlayerListener(VideoActivity owner) {
-            mOwner = new WeakReference<VideoActivity>(owner);
+            mOwner = new WeakReference<RtspW3Activity>(owner);
         }
 
         @Override
         public void onEvent(MediaPlayer.Event event) {
-            VideoActivity player = mOwner.get();
+            RtspW3Activity player = mOwner.get();
 
             switch(event.type) {
                 case MediaPlayer.Event.EndReached:
