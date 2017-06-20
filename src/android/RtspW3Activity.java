@@ -35,11 +35,10 @@ import android.util.Log;
 
 import android.net.Uri;
 import android.view.Window;
-/*import android.widget.MediaController;
+import android.widget.MediaController;
 import android.widget.VideoView;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
-*/
 
 
 
