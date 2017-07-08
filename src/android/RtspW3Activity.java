@@ -203,6 +203,7 @@ public class RtspW3Activity extends Activity{
             mMediaPlayer.setMedia(m);
             mMediaPlayer.play();
         } catch (Exception e) {
+             Toast.makeText(this, "Error:"+e.getMessage(), Toast.LENGTH_LONG).show();
             Toast.makeText(this, "Error creating player!", Toast.LENGTH_LONG).show();
         }
     }
