@@ -168,7 +168,7 @@ public class RtspW3Activity extends Activity{
      *************/
 
     private void createPlayer(String media) {
-        releasePlayer();
+        //releasePlayer();
         try {
             if (media.length() > 0) {
                 Toast toast = Toast.makeText(this, media, Toast.LENGTH_LONG);
