@@ -132,12 +132,12 @@ public class RtspW3Activity extends Activity{
             return;
 
         // get screen size
-        int w = getWindow().getDecorView().getWidth();
-        int h = getWindow().getDecorView().getHeight();
+        int w = 300;
+        int h = 300;
 
         // getWindow().getDecorView() doesn't always take orientation into
         // account, we have to correct the values
-        boolean isPortrait = getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
+        /*boolean isPortrait = getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
         if (w > h && isPortrait || w < h && !isPortrait) {
             int i = w;
             w = h;
@@ -150,7 +150,7 @@ public class RtspW3Activity extends Activity{
         if (screenAR < videoAR)
             h = (int) (w / videoAR);
         else
-            w = (int) (h * videoAR);
+            w = (int) (h * videoAR);*/q
 
         // force surface buffer size
         holder.setFixedSize(mVideoWidth, mVideoHeight);
