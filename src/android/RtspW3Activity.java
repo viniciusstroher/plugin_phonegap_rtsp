@@ -179,13 +179,14 @@ public class RtspW3Activity extends Activity{
 
             // Create LibVLC
             // TODO: make this more robust, and sync with audio demo
-            ArrayList<String> options = new ArrayList<String>();
+            //ArrayList<String> options = new ArrayList<String>();
             //options.add("--subsdec-encoding <encoding>");
-            options.add("--rtsp-tcp");
+            //options.add("--rtsp-tcp");
             //options.add("--aout=opensles");
             //options.add("--audio-time-stretch"); // time stretching
-            options.add("-vvv"); // verbosity
-            libvlc = new LibVLC(getApplicationContext(),options);
+            //options.add("-vvv"); // verbosity
+            //libvlc = new LibVLC(getApplicationContext(),options);
+            libvlc = new LibVLC();
             
             holder.setKeepScreenOn(true);
 
@@ -200,7 +201,7 @@ public class RtspW3Activity extends Activity{
             //vout.addCallback(this);
             vout.attachViews();
 
-            Media m = new Media(libvlc, LibVLC.PathToURI(media));
+            Media m = new Media(libvlc,media);
             mMediaPlayer.setMedia(m);
             mMediaPlayer.play();
         } catch (Exception e) {
