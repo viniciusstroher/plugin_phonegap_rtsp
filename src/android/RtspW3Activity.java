@@ -201,7 +201,7 @@ public class RtspW3Activity extends Activity{
             //vout.addCallback(this);
             vout.attachViews();
 
-            Media m = new Media(libvlc,media);
+            Media m = new Media(libvlc,Uri.parse(media));
             mMediaPlayer.setMedia(m);
             mMediaPlayer.play();
         } catch (Exception e) {
