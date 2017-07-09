@@ -186,7 +186,7 @@ public class RtspW3Activity extends Activity{
             //options.add("--audio-time-stretch"); // time stretching
             //options.add("-vvv"); // verbosity
             //libvlc = new LibVLC(getApplicationContext(),options);
-            libvlc = new LibVLC();
+            libvlc = new LibVLC(getApplicationContext());
             
             holder.setKeepScreenOn(true);
 
