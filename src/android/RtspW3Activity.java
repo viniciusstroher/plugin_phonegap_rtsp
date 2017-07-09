@@ -182,8 +182,8 @@ public class RtspW3Activity extends Activity{
             ArrayList<String> options = new ArrayList<String>();
             //options.add("--subsdec-encoding <encoding>");
             options.add("--rtsp-tcp");
-            options.add("--aout=opensles");
-            options.add("--audio-time-stretch"); // time stretching
+            //options.add("--aout=opensles");
+            //options.add("--audio-time-stretch"); // time stretching
             options.add("-vvv"); // verbosity
             libvlc = new LibVLC(getApplicationContext(),options);
             
