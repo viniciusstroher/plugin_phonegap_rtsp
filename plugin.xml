@@ -49,8 +49,7 @@
         <!-- configuracoes de activity -->
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             
-            <activity android:label="RTSP" android:name="org.apache.cordova.rtspw3.RtspW3Activity"
-            	 android:theme="@android:style/android:Theme.Holo.Panel">
+            <activity android:label="RTSP" android:name="org.apache.cordova.rtspw3.RtspW3Activity">
             </activity>
 
             <activity android:name="io.vov.vitamio.activity.InitActivity" 
