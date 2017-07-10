@@ -150,7 +150,7 @@ public class RtspW3Activity extends Activity{
         if (screenAR < videoAR)
             h = (int) (w / videoAR);
         else
-            w = (int) (h * videoAR);*/q
+            w = (int) (h * videoAR);*/
 
         // force surface buffer size
         holder.setFixedSize(mVideoWidth, mVideoHeight);
@@ -181,7 +181,7 @@ public class RtspW3Activity extends Activity{
             // TODO: make this more robust, and sync with audio demo
             ArrayList<String> options = new ArrayList<String>();
             //options.add("--subsdec-encoding <encoding>");
-            options.add("--rtsp-tcp");
+            //options.add("--rtsp-tcp");
             options.add("--rtsp-user=");
             options.add("--rtsp-pwd=");
             
