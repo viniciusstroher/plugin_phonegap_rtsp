@@ -89,7 +89,7 @@ public class RtspW3Activity extends Activity{
         link_rtsp = getIntent().getStringExtra("LINK_RTSP");
         try{
             String [] optionString = getIntent().getStringExtra("OPTIONS_VLC").split(" ");
-            options = Arrays.asList(optionString);
+            options.addAll(Arrays.asList(optionString));
         }catch(Exception e){
             Log.i("RTSP"," PARAMETRO OPTIONS_VLC ERROR: "+e.getMessage());
         }
