@@ -76,7 +76,7 @@ public class RtspW3 extends CordovaPlugin {
     
         if (action.equals("abrirRtsp")) {
             //pega parametros do js
-            this.params = args.getJSONObject();
+            this.params = args.getJSONObject(0);
             Intent intent = new Intent(cordova.getActivity(), RtspW3Activity.class);
 
             //LINK PARA ENVIAR PARA A ACTIVITY
