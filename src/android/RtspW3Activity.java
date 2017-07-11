@@ -193,6 +193,7 @@ public class RtspW3Activity extends Activity{
             //options.add("--aout=opensles");
             //options.add("--audio-time-stretch"); // time stretching
             //options.add("-vvv"); // verbosity
+            Log.i("RTSP","OPTIONS VLC LIB INSTANCE: "+options.toString());
             libvlc = new LibVLC(getApplicationContext(),options);
             //libvlc = new LibVLC(getApplicationContext());
             
