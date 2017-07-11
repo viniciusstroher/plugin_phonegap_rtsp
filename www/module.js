@@ -25,7 +25,7 @@ var RtspW3 = {
     abrirRtsp:function(link,p) {
         var params = {
           link	: link,
-          params: null
+          params: ""
         };
 
         if(p){
