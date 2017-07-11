@@ -31,7 +31,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.content.Intent;
-
+import  android.util.Log;
 public class RtspW3 extends CordovaPlugin {
     private static final String LOG_TAG = "RtspW3";
 
@@ -82,7 +82,7 @@ public class RtspW3 extends CordovaPlugin {
                 Array optionsVLC = this.params.getJSONArray("params");
                 intent.putExtra("OPTIONS_VLC", optionsVLC);
             }catch(Exception e){
-
+                Log.i("RTSP"," PARAMETRO OPTIONS_VLC ERROR: "+e.getMessage());
             }
             //LINK PARA ENVIAR PARA A ACTIVITY
             intent.putExtra("LINK_RTSP", this.params.getString("link"));

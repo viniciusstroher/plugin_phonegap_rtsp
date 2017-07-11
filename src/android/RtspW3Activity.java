@@ -86,7 +86,11 @@ public class RtspW3Activity extends Activity{
         
         //PEGA PARAMETRO
         link_rtsp = getIntent().getStringExtra("LINK_RTSP");
-        
+        try{
+            link_rtsp = (Array)getIntent().getStringArrayExtra("OPTIONS_VLC");
+        }catch(Exception e){
+            Log.i("RTSP"," PARAMETRO OPTIONS_VLC ERROR: "+e.getMessage());
+        }
         //videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
         //mSurface = (SurfaceView) findViewById(fakeR.getId("id", "videoview"));
         mSurface = (SurfaceView) findViewById(fakeR.getId("id", "surface"));
@@ -137,24 +141,23 @@ public class RtspW3Activity extends Activity{
 
         // getWindow().getDecorView() doesn't always take orientation into
         // account, we have to correct the values
-        /*boolean isPortrait = getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
+        boolean isPortrait = getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
         if (w > h && isPortrait || w < h && !isPortrait) {
             int i = w;
             w = h;
             h = i;
         }
 
-        float videoAR = (float) mVideoWidth / (float) mVideoHeight;
+        float videoAR  = (float) mVideoWidth / (float) mVideoHeight;
         float screenAR = (float) w / (float) h;
 
         if (screenAR < videoAR)
             h = (int) (w / videoAR);
         else
-            w = (int) (h * videoAR);*/
+            w = (int) (h * videoAR);
 
         // force surface buffer size
         holder.setFixedSize(mVideoWidth, mVideoHeight);
-
         // set display size
         LayoutParams lp = mSurface.getLayoutParams();
         lp.width = w;
@@ -208,8 +211,8 @@ public class RtspW3Activity extends Activity{
             mMediaPlayer.setMedia(m);
             mMediaPlayer.play();
         } catch (Exception e) {
-             Toast.makeText(this, "Error:"+e.getMessage(), Toast.LENGTH_LONG).show();
-            Toast.makeText(this, "Error creating player!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Error:"+e.getMessage(), Toast.LENGTH_LONG).show();
+            
         }
     }
 
@@ -219,6 +222,7 @@ public class RtspW3Activity extends Activity{
             return;
         mMediaPlayer.stop();
         final IVLCVout vout = mMediaPlayer.getVLCVout();
+        
         //vout.removeCallback(this);
         vout.detachViews();
         holder = null;
