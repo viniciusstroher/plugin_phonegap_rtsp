@@ -34,6 +34,8 @@ import android.content.Intent;
 import  android.util.Log;
 
 import java.util.List;
+import java.util.ArrayList;
+
 public class RtspW3 extends CordovaPlugin {
     private static final String LOG_TAG = "RtspW3";
 

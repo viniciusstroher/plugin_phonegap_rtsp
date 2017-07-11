@@ -54,6 +54,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.ArrayList;
 import org.apache.cordova.rtspw3.FakeR;
 
 public class RtspW3Activity extends Activity{
