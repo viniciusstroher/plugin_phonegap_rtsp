@@ -36,7 +36,7 @@ var RtspW3 = {
 
         /*RtspW3 -> nome no plugin.xml*/
         /*abrirRtsp -> metodo*/
-        exec(null, null, "RtspW3", "abrirRtsp", [params]);
+        exec(null, null, "RtspW3", "abrirRtsp", params);
         
     }
 };
