@@ -35,7 +35,7 @@ import  android.util.Log;
 
 import java.util.List;
 import java.util.ArrayList;
-
+import java.util.Map;
 public class RtspW3 extends CordovaPlugin {
     private static final String LOG_TAG = "RtspW3";
 
@@ -87,8 +87,10 @@ public class RtspW3 extends CordovaPlugin {
                 JSONObject arr           = this.params.getJSONObject("params");
                 String [] strArray       = new String[arr.length()];
                 int i = 0;
+                Map<String, JSONObject> map = (Map<String,JSONObject>)arr.getMap();
+
                 //adding your required data into a array
-                for (String key : arr.keySet()) {
+                for (String key : map.keyset()) {
                     strArray[i] = arr.getString(key);
                     i++;
                 }
