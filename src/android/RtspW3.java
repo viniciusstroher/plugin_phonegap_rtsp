@@ -84,8 +84,8 @@ public class RtspW3 extends CordovaPlugin {
             Intent intent = new Intent(cordova.getActivity(), RtspW3Activity.class);
             try{
 
-                JSONArray arr = this.params.getJSONArray("params");
-                List<String> list = new ArrayList<String>();
+                JSONArray arr           = this.params.getJSONArray("params");
+                List<String> optionsVLC = new ArrayList<String>();
                 for(int i = 0; i < arr.length(); i++){
                     list.add(arr.getJSONObject(i).getString(0));
                 }
