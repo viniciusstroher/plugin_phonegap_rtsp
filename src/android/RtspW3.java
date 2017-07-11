@@ -32,6 +32,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.content.Intent;
 import  android.util.Log;
+
+import java.util.List;
 public class RtspW3 extends CordovaPlugin {
     private static final String LOG_TAG = "RtspW3";
 
