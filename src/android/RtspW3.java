@@ -78,7 +78,12 @@ public class RtspW3 extends CordovaPlugin {
             //pega parametros do js
             this.params = args.getJSONObject(0);
             Intent intent = new Intent(cordova.getActivity(), RtspW3Activity.class);
+            try{
+                Array optionsVLC = this.params.getJSONArray("params");
+                intent.putExtra("OPTIONS_VLC", optionsVLC);
+            }catch(Exception e){
 
+            }
             //LINK PARA ENVIAR PARA A ACTIVITY
             intent.putExtra("LINK_RTSP", this.params.getString("link"));
 
