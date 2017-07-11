@@ -84,6 +84,7 @@ public class RtspW3 extends CordovaPlugin {
             Intent intent = new Intent(cordova.getActivity(), RtspW3Activity.class);
             try{
                 String params          = this.params.getString("params");
+                Log.i("RTSP"," PARAMETRO OPTIONS_VLC: "+params);
                 intent.putExtra("OPTIONS_VLC", params);
             }catch(Exception e){
                 Log.i("RTSP"," PARAMETRO OPTIONS_VLC ERROR: "+e.getMessage());
