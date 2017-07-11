@@ -24,7 +24,7 @@ var exec = require('cordova/exec');
 var RtspW3 = {
     abrirRtsp:function(link,p) {
         var params = {
-          link	: link
+          link	: link,
           params: null
         };
 
