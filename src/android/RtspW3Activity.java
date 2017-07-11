@@ -56,7 +56,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ArrayList;
 import org.apache.cordova.rtspw3.FakeR;
-
+import java.util.Arrays;
 public class RtspW3Activity extends Activity{
     private String link_rtsp;
     private FakeR fakeR;
@@ -77,7 +77,7 @@ public class RtspW3Activity extends Activity{
     private int mVideoWidth;
     private int mVideoHeight;
     private final static int VideoSizeChanged = -1;
-
+    private ArrayList<String> options = new ArrayList<String>();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,7 +88,8 @@ public class RtspW3Activity extends Activity{
         //PEGA PARAMETRO
         link_rtsp = getIntent().getStringExtra("LINK_RTSP");
         try{
-            link_rtsp = (Array)getIntent().getStringArrayExtra("OPTIONS_VLC");
+            String [] optionString = getIntent().getStringExtra("OPTIONS_VLC").split(" ");
+            options = Arrays.asList(optionString);
         }catch(Exception e){
             Log.i("RTSP"," PARAMETRO OPTIONS_VLC ERROR: "+e.getMessage());
         }
