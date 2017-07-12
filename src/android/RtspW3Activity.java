@@ -186,14 +186,14 @@ public class RtspW3Activity extends Activity{
             // Create LibVLC
             // TODO: make this more robust, and sync with audio demo
             ArrayList<String> options = new ArrayList<String>();
-            /*for(String v : optionString){
+            for(String v : optionString){
                 Log.i("RTSP","ADD OPTIONS VLC LIB INSTANCE: "+v);
                 options.add(v);
-            }*/
+            }
             //options.add("--subsdec-encoding <encoding>");
-            options.add("--rtsp-tcp");
-            options.add("--rtsp-user=");
-            options.add("--rtsp-pwd=");
+            //options.add("--rtsp-tcp");
+            //options.add("--rtsp-user=");
+            //options.add("--rtsp-pwd=");
             
             //options.add("--aout=opensles");
             //options.add("--audio-time-stretch"); // time stretching
