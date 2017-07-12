@@ -187,6 +187,7 @@ public class RtspW3Activity extends Activity{
             // TODO: make this more robust, and sync with audio demo
             ArrayList<String> options = new ArrayList<String>();
             for(String v : optionString){
+                Log.i("RTSP","ADD OPTIONS VLC LIB INSTANCE: "+v);
                 options.add(v);
             }
             //options.add("--subsdec-encoding <encoding>");
