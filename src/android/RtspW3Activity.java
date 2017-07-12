@@ -78,6 +78,8 @@ public class RtspW3Activity extends Activity{
     private int mVideoHeight;
     private final static int VideoSizeChanged = -1;
     private ArrayList<String> options = new ArrayList<String>();
+    private String [] optionString;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,8 +90,8 @@ public class RtspW3Activity extends Activity{
         //PEGA PARAMETRO
         link_rtsp = getIntent().getStringExtra("LINK_RTSP");
         try{
-            String [] optionString = getIntent().getStringExtra("OPTIONS_VLC").split(" ");
-            options.addAll(Arrays.asList(optionString));
+            optionString = getIntent().getStringExtra("OPTIONS_VLC").split(" ");
+            
         }catch(Exception e){
             Log.i("RTSP"," PARAMETRO OPTIONS_VLC ERROR: "+e.getMessage());
         }
@@ -184,7 +186,10 @@ public class RtspW3Activity extends Activity{
 
             // Create LibVLC
             // TODO: make this more robust, and sync with audio demo
-            //ArrayList<String> options = new ArrayList<String>();
+            ArrayList<String> options = new ArrayList<String>();
+            for(String v : optionString){
+                options.add(v);
+            }
             //options.add("--subsdec-encoding <encoding>");
             //options.add("--rtsp-tcp");
             //options.add("--rtsp-user=");
