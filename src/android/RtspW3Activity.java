@@ -77,7 +77,6 @@ public class RtspW3Activity extends Activity{
     private int mVideoWidth;
     private int mVideoHeight;
     private final static int VideoSizeChanged = -1;
-    private ArrayList<String> options = new ArrayList<String>();
     private String [] optionString;
 
     @Override
