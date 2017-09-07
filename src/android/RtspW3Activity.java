@@ -99,6 +99,7 @@ public class RtspW3Activity extends Activity{
             optionString = getIntent().getStringExtra("OPTIONS_VLC").split(" ");
         }catch(Exception e){
             Log.i("RTSP"," PARAMETRO OPTIONS_VLC ERROR: "+e.getMessage());
+            finish();
         }
 
         
@@ -106,6 +107,7 @@ public class RtspW3Activity extends Activity{
         button.setOnClickListener(new View.OnClickListener() {
           public void onClick(View v) {
              // Code here executes on main thread after user presses button
+            releasePlayer();
             finish();
           }
         });
