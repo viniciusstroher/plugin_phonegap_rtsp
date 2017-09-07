@@ -79,8 +79,7 @@ public class RtspW3 extends CordovaPlugin {
     
         if (action.equals("abrirRtsp")) {
             //pega parametros do js
-
-
+            
             this.params = args.getJSONObject(0);
             Intent intent = new Intent(cordova.getActivity(), RtspW3Activity.class);
             try{
@@ -93,13 +92,9 @@ public class RtspW3 extends CordovaPlugin {
             //LINK PARA ENVIAR PARA A ACTIVITY
             intent.putExtra("LINK_RTSP", this.params.getString("link"));
 
-
-            this.cordova.getActivity().runOnUiThread(new Runnable() {
-                 if (this.cordova != null) {
-                    this.cordova.startActivityForResult((CordovaPlugin) this, intent, 0);
-                 }
-                
-            });
+            if (this.cordova != null) {
+                this.cordova.startActivityForResult((CordovaPlugin) this, intent, 0);
+            }
         }
 
         callbackContext.success();

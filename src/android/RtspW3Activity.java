@@ -182,7 +182,7 @@ public class RtspW3Activity extends Activity{
             //options.add("--rtsp-pwd=");
             //options.add("--aout=opensles");
             //options.add("--audio-time-stretch"); // time stretching
-
+            // --rtsp-tcp --avcodec-hw=dxva2 --noaudio --rtsp-frame-buffer-size=200
             options.add("-vvv"); // verbosity
             Log.i("RTSP","OPTIONS VLC LIB INSTANCE: "+options.toString());
             libvlc = new LibVLC(getApplicationContext(),options);
@@ -198,6 +198,11 @@ public class RtspW3Activity extends Activity{
             vout.attachViews();
 
             m = new Media(libvlc,Uri.parse(media));
+            m.setHWDecoderEnabled(true, false);
+            m.addOption(":network-caching=150");
+            m.addOption(":clock-jitter=0");
+            m.addOption(":clock-synchro=0");
+            
             mMediaPlayer.setMedia(m);
             mMediaPlayer.play();
 
