@@ -115,10 +115,9 @@ public class RtspW3Activity extends Activity{
         });
 
         mSurface = (SurfaceView) findViewById(fakeR.getId("id", "surface"));        
-        
-
         holder   = mSurface.getHolder();
         holder.setFixedSize(mVideoWidth, mVideoHeight);
+
         createPlayer(link_rtsp);
     }
 
@@ -135,8 +134,8 @@ public class RtspW3Activity extends Activity{
 
     @Override
     protected void onPause() {
-        super.onPause();
         releasePlayer();
+        super.onPause();
     }
 
     @Override
@@ -196,21 +195,23 @@ public class RtspW3Activity extends Activity{
         if (libvlc == null){
             return;
         }
-
-        m.release();
-        m = null;
-        mMediaPlayer.stop();
-        mMediaPlayer.release();
         
+        if(m != null){
+            m.release();
+            m = null;
+        }
+        
+
+        if(mMediaPlayer != null){
+            mMediaPlayer.stop();
+        }
+
+
         final IVLCVout vout = mMediaPlayer.getVLCVout();
         vout.detachViews();
         
-        holder = null;
         libvlc.release();
         libvlc = null;
-
-        mVideoWidth  = 0;
-        mVideoHeight = 0;
     }
 
     private MediaPlayer.EventListener mPlayerListener = new MyPlayerListener(this);
