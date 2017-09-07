@@ -186,7 +186,8 @@ public class RtspW3Activity extends Activity{
             options.add("-vvv"); // verbosity
             Log.i("RTSP","OPTIONS VLC LIB INSTANCE: "+options.toString());
             libvlc = new LibVLC(getApplicationContext(),options);
-
+            libvlc.setHardwareAcceleration(LibVLC.HW_ACCELERATION_FULL);
+            libvlc.eventVideoPlayerActivityCreated(true); 
             
             holder.setKeepScreenOn(true);
 
