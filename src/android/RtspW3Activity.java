@@ -247,7 +247,6 @@ public class RtspW3Activity extends Activity{
                 case MediaPlayer.Event.EndReached:
                     Log.i("RTSP","MediaPlayer.Event.EndReached: ");
                     player.releasePlayer();
-                    RtspW3Activity.this.finish();
                 break;
                 case MediaPlayer.Event.Playing:
                 case MediaPlayer.Event.Paused:
