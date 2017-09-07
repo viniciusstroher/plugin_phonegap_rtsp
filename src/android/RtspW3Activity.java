@@ -90,15 +90,12 @@ public class RtspW3Activity extends Activity{
         link_rtsp = getIntent().getStringExtra("LINK_RTSP");
         try{
             optionString = getIntent().getStringExtra("OPTIONS_VLC").split(" ");
-            
         }catch(Exception e){
             Log.i("RTSP"," PARAMETRO OPTIONS_VLC ERROR: "+e.getMessage());
         }
-        //videoView = (VideoView) findViewById(fakeR.getId("id", "videoview"));
-        //mSurface = (SurfaceView) findViewById(fakeR.getId("id", "videoview"));
-        mSurface = (SurfaceView) findViewById(fakeR.getId("id", "surface"));
-        
-        holder = mSurface.getHolder();
+
+        mSurface = (SurfaceView) findViewById(fakeR.getId("id", "surface"));        
+        holder   = mSurface.getHolder();
         createPlayer(link_rtsp);
     }
 
@@ -126,9 +123,7 @@ public class RtspW3Activity extends Activity{
         releasePlayer();
     }
 
-    /*************
-     * Surface
-     *************/
+
     private void setSize(int width, int height) {
         mVideoWidth = width;
         mVideoHeight = height;
@@ -163,7 +158,7 @@ public class RtspW3Activity extends Activity{
         holder.setFixedSize(mVideoWidth, mVideoHeight);
         // set display size
         LayoutParams lp = mSurface.getLayoutParams();
-        lp.width = w;
+        lp.width  = w;
         lp.height = h;
         mSurface.setLayoutParams(lp);
         mSurface.invalidate();
@@ -229,9 +224,8 @@ public class RtspW3Activity extends Activity{
         if (libvlc == null)
             return;
         mMediaPlayer.stop();
+        mMediaPlayer.release();
         final IVLCVout vout = mMediaPlayer.getVLCVout();
-        
-        //vout.removeCallback(this);
         vout.detachViews();
         holder = null;
         libvlc.release();
