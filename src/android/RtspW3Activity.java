@@ -125,7 +125,6 @@ public class RtspW3Activity extends Activity{
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        setSize(mVideoWidth, mVideoHeight);
     }
 
     @Override
@@ -154,16 +153,6 @@ public class RtspW3Activity extends Activity{
         return super.onKeyDown(keyCode, event);
     }
 
-    private void setSize(int width, int height) {
-
-        LayoutParams lp = mSurface.getLayoutParams();
-        lp.width        = width;
-        lp.height       = height;
-
-        mSurface.setLayoutParams(lp);
-        mSurface.invalidate();
-    }
-
     private void createPlayer(String media) {
         try {
             if (media.length() > 0) {
@@ -177,13 +166,8 @@ public class RtspW3Activity extends Activity{
                 Log.i("RTSP","ADD OPTIONS VLC LIB INSTANCE: "+v);
                 options.add(v);
             }
-            //options.add("--subsdec-encoding <encoding>");
-            //options.add("--rtsp-tcp");
-            //options.add("--rtsp-user=");
-            //options.add("--rtsp-pwd=");
-            //options.add("--aout=opensles");
-            //options.add("--audio-time-stretch"); // time stretching
-            // --rtsp-tcp --avcodec-hw=dxva2 --noaudio --rtsp-frame-buffer-size=200
+
+            // --rtsp-tcp --rtsp-user= --rtsp-pwd= --avcodec-hw=dxva2 --noaudio --rtsp-frame-buffer-size=200
             options.add("-vvv"); // verbosity
             Log.i("RTSP","OPTIONS VLC LIB INSTANCE: "+options.toString());
             libvlc = new LibVLC(getApplicationContext(),options);
