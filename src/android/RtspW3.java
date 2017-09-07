@@ -61,7 +61,6 @@ public class RtspW3 extends CordovaPlugin {
 
     }
 
-
     @Override
     public void onPause(boolean multitasking) {
 

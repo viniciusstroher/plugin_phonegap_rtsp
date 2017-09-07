@@ -5,9 +5,16 @@
     android:layout_height="match_parent"
     tools:context=".VideoViewActivity"
     android:background="#fff" >  
+    
     <SurfaceView
     android:id="@+id/surface"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_gravity="center" />
+    
+    <Button
+     android:id="@+id/button_id"
+     android:layout_height="fill_parent"
+     android:layout_width="wrap_content"
+     android:text="Fechar" />
 </RelativeLayout>

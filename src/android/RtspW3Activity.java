@@ -101,6 +101,15 @@ public class RtspW3Activity extends Activity{
             Log.i("RTSP"," PARAMETRO OPTIONS_VLC ERROR: "+e.getMessage());
         }
 
+        
+        final Button button = findViewById(R.id.button_id);
+        button.setOnClickListener(new View.OnClickListener() {
+          public void onClick(View v) {
+             // Code here executes on main thread after user presses button
+            getApplicationContext().finish();
+          }
+        });
+
         mSurface = (SurfaceView) findViewById(fakeR.getId("id", "surface"));        
         holder   = mSurface.getHolder();
         createPlayer(link_rtsp);
@@ -131,21 +140,10 @@ public class RtspW3Activity extends Activity{
         
     }
 
-
-
-    @Override
-    public  void onBackPressed(){
-        releasePlayer();
-        finish();
-        super.onDestroy();
-    }
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            finish();
-            releasePlayer();
-            return true;
+            return false;
         }
         return super.onKeyDown(keyCode, event);
     }
@@ -238,9 +236,9 @@ public class RtspW3Activity extends Activity{
 
             switch(event.type) {
                 case MediaPlayer.Event.EndReached:
-                    Log.d(TAG, "MediaPlayerEndReached");
-                    player.releasePlayer();
-                    break;
+                //Log.d(TAG, "MediaPlayerEndReached");
+                //player.releasePlayer();
+                break;
                 case MediaPlayer.Event.Playing:
                 case MediaPlayer.Event.Paused:
                 case MediaPlayer.Event.Stopped:
