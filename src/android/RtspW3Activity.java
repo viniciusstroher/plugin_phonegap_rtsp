@@ -60,7 +60,7 @@ import java.util.Arrays;
 
 import android.widget.Button;
 import android.view.KeyEvent;
-public class RtspW3Activity extends Activity{
+public class RtspW3Activity extends Activity implements MediaPlayer.EventListener{
     private String link_rtsp;
     private FakeR fakeR;
     
@@ -174,7 +174,7 @@ public class RtspW3Activity extends Activity{
             holder.setKeepScreenOn(true);
 
             mMediaPlayer = new MediaPlayer(libvlc);
-            mMediaPlayer.setEventListener(mPlayerListener);
+            mMediaPlayer.setEventListener(this);
 
             final IVLCVout vout = mMediaPlayer.getVLCVout();
             vout.setVideoView(mSurface);
@@ -201,7 +201,6 @@ public class RtspW3Activity extends Activity{
             m = null;
         }
         
-
         if(mMediaPlayer != null){
             mMediaPlayer.stop();
         }
@@ -214,31 +213,21 @@ public class RtspW3Activity extends Activity{
         libvlc = null;
     }
 
-    private MediaPlayer.EventListener mPlayerListener = new MyPlayerListener(this);
 
-    private static class MyPlayerListener implements MediaPlayer.EventListener {
-        private WeakReference<Activity> mOwner;
+    @Override
+    public void onEvent(MediaPlayer.Event event) {
+        RtspW3Activity player = (RtspW3Activity)mOwner.get();
 
-        public MyPlayerListener(Activity owner) {
-            mOwner = new WeakReference<Activity>(owner);
-        }
-
-        @Override
-        public void onEvent(MediaPlayer.Event event) {
-            RtspW3Activity player = (RtspW3Activity)mOwner.get();
-
-            switch(event.type) {
-                case MediaPlayer.Event.EndReached:
-                    Log.i("RTSP","MediaPlayer.Event.EndReached: ");
-                    player.releasePlayer();
-                break;
-                case MediaPlayer.Event.Playing:
-                case MediaPlayer.Event.Paused:
-                case MediaPlayer.Event.Stopped:
-                default:
-                break;
-            }
+        switch(event.type) {
+            case MediaPlayer.Event.EndReached:
+                Log.i("RTSP","MediaPlayer.Event.EndReached: ");
+                player.releasePlayer();
+            break;
+            case MediaPlayer.Event.Playing:
+            case MediaPlayer.Event.Paused:
+            case MediaPlayer.Event.Stopped:
+            default:
+            break;
         }
     }
-
 }
