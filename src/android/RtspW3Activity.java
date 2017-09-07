@@ -99,7 +99,8 @@ public class RtspW3Activity extends Activity{
             optionString = getIntent().getStringExtra("OPTIONS_VLC").split(" ");
         }catch(Exception e){
             Log.i("RTSP"," PARAMETRO OPTIONS_VLC ERROR: "+e.getMessage());
-            finish();
+             RtspW3Activity.this.finish();
+
         }
 
         
@@ -108,7 +109,8 @@ public class RtspW3Activity extends Activity{
           public void onClick(View v) {
              // Code here executes on main thread after user presses button
             releasePlayer();
-            finish();
+            RtspW3Activity.this.finish();
+
           }
         });
 
@@ -142,7 +144,6 @@ public class RtspW3Activity extends Activity{
     protected void onDestroy() {
         releasePlayer();
         super.onDestroy();
-        
     }
 
     @Override
@@ -186,7 +187,7 @@ public class RtspW3Activity extends Activity{
             options.add("-vvv"); // verbosity
             Log.i("RTSP","OPTIONS VLC LIB INSTANCE: "+options.toString());
             libvlc = new LibVLC(getApplicationContext(),options);
-            
+
             
             holder.setKeepScreenOn(true);
 
@@ -203,13 +204,16 @@ public class RtspW3Activity extends Activity{
 
         } catch (Exception e) {
             Toast.makeText(this, "Error:"+e.getMessage(), Toast.LENGTH_LONG).show();
-            finish(); 
+             RtspW3Activity.this.finish();
+ 
         }
     }
 
     private void releasePlayer() {
-        if (libvlc == null)
+        if (libvlc == null){
             return;
+        }
+        
         m.release();
         m = null;
         mMediaPlayer.stop();
