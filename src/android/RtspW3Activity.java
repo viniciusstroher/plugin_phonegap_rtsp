@@ -166,7 +166,7 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
                 options.add(v);
             }
 
-            // --rtsp-tcp --rtsp-user= --rtsp-pwd= --avcodec-hw=dxva2 --noaudio --rtsp-frame-buffer-size=200
+            //--aout=none --rtsp-tcp --rtsp-user= --rtsp-pwd= --avcodec-hw=dxva2  --rtsp-frame-buffer-size=200
             options.add("-vvv"); // verbosity
             Log.i("RTSP","OPTIONS VLC LIB INSTANCE: "+options.toString());
             libvlc = new LibVLC(getApplicationContext(),options);
@@ -196,16 +196,7 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
             return;
         }
         
-        if(m != null){
-            m.release();
-            m = null;
-        }
-        
-        if(mMediaPlayer != null){
-            mMediaPlayer.stop();
-        }
-
-
+        mMediaPlayer.release();
         final IVLCVout vout = mMediaPlayer.getVLCVout();
         vout.detachViews();
         
