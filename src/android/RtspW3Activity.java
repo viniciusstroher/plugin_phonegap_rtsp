@@ -126,10 +126,23 @@ public class RtspW3Activity extends Activity{
         super.onDestroy();
         releasePlayer();
     }
+
+
+
     @Override
     public  void onBackPressed(){
         super.onDestroy();
         releasePlayer();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            super.onDestroy();
+            releasePlayer();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     private void setSize(int width, int height) {
