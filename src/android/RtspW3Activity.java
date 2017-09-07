@@ -109,8 +109,10 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
           public void onClick(View v) {
             Log.i("RTSP","FECHANDO VIEW ");
              // Code here executes on main thread after user presses button
-            releasePlayer();
-            RtspW3Activity.this.finish();
+            super.onBackPressed();
+            finish();
+            //releasePlayer();
+            //RtspW3Activity.this.finish();
 
           }
         });
@@ -157,7 +159,7 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            return false;
+            super.onBackPressed();
         }
         return super.onKeyDown(keyCode, event);
     }
