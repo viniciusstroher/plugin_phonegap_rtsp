@@ -87,7 +87,7 @@ public class RtspW3Activity extends Activity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mVideoWidth = 500;
+        mVideoWidth = 400;
         mVideoHeight= 400;
         
         fakeR = new FakeR(this);
@@ -126,17 +126,18 @@ public class RtspW3Activity extends Activity{
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         releasePlayer();
+        super.onDestroy();
+        
     }
 
 
 
     @Override
     public  void onBackPressed(){
+        releasePlayer();
         finish();
         super.onDestroy();
-        releasePlayer();
     }
 
     @Override
@@ -196,10 +197,10 @@ public class RtspW3Activity extends Activity{
             m = new Media(libvlc,Uri.parse(media));
             mMediaPlayer.setMedia(m);
             mMediaPlayer.play();
-            
+
         } catch (Exception e) {
             Toast.makeText(this, "Error:"+e.getMessage(), Toast.LENGTH_LONG).show();
-            
+            finish(); 
         }
     }
 
