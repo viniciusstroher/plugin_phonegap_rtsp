@@ -5,14 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".VideoViewActivity"
     android:background="#fff" >  
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <SurfaceView
-            android:id="@+id/surface"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_gravity="center" />
-    </FrameLayout>
+    <SurfaceView
+    android:id="@+id/surface"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center" />
 </RelativeLayout>

@@ -189,15 +189,14 @@ public class RtspW3Activity extends Activity{
             mMediaPlayer = new MediaPlayer(libvlc);
             mMediaPlayer.setEventListener(mPlayerListener);
 
-            // Set up video output
             final IVLCVout vout = mMediaPlayer.getVLCVout();
             vout.setVideoView(mSurface);
-
             vout.attachViews();
 
             m = new Media(libvlc,Uri.parse(media));
             mMediaPlayer.setMedia(m);
             mMediaPlayer.play();
+            
         } catch (Exception e) {
             Toast.makeText(this, "Error:"+e.getMessage(), Toast.LENGTH_LONG).show();
             
