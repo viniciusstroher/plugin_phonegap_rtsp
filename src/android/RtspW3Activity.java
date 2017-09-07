@@ -119,9 +119,7 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
           public void onClick(View v) {
              // Code here executes on main thread after user presses button
             releasePlayer();
-            createPlayer();
-            RtspW3Activity.this.finish();
-
+            createPlayer(link_rtsp);
           }
         });
 
@@ -206,11 +204,11 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
         if (libvlc == null){
             return;
         }
-        
-        mMediaPlayer.release();
+        mMediaPlayer.stop();
         final IVLCVout vout = mMediaPlayer.getVLCVout();
         vout.detachViews();
-        
+        vout.removeCallback(this);
+        mMediaPlayer.release();
         libvlc.release();
         libvlc = null;
     }
