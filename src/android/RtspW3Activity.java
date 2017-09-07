@@ -84,8 +84,8 @@ public class RtspW3Activity extends Activity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mVideoWidth = 600;
-        mVideoHeight= 600;
+        mVideoWidth = 500;
+        mVideoHeight= 400;
         
         fakeR = new FakeR(this);
         setContentView(fakeR.getId("layout", "rtsp_w3_activity"));
@@ -146,8 +146,7 @@ public class RtspW3Activity extends Activity{
         try {
             if (media.length() > 0) {
                 Toast toast = Toast.makeText(this, media, Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0,
-                        0);
+                toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0,0);
                 toast.show();
             }
 
