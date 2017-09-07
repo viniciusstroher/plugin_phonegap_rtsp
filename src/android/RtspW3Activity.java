@@ -198,11 +198,6 @@ public class RtspW3Activity extends Activity{
             vout.attachViews();
 
             m = new Media(libvlc,Uri.parse(media));
-            m.setHWDecoderEnabled(true, false);
-            m.addOption(":network-caching=150");
-            m.addOption(":clock-jitter=0");
-            m.addOption(":clock-synchro=0");
-            
             mMediaPlayer.setMedia(m);
             mMediaPlayer.play();
 
