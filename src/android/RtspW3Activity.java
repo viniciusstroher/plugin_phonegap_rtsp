@@ -88,7 +88,7 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mVideoWidth = 400;
-        mVideoHeight= 400;
+        mVideoHeight= 600;
         
         fakeR = new FakeR(this);
         setContentView(fakeR.getId("layout", "rtsp_w3_activity"));
@@ -165,7 +165,7 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
                 Log.i("RTSP","ADD OPTIONS VLC LIB INSTANCE: "+v);
                 options.add(v);
             }
-
+            //para cameras --aout=none --rtsp-tcp
             //--aout=none --rtsp-tcp --rtsp-user= --rtsp-pwd= --avcodec-hw=dxva2  --rtsp-frame-buffer-size=200
             options.add("-vvv"); // verbosity
             Log.i("RTSP","OPTIONS VLC LIB INSTANCE: "+options.toString());
