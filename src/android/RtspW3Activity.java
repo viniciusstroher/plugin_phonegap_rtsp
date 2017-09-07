@@ -220,6 +220,8 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
         switch(event.type) {
             case MediaPlayer.Event.EndReached:
                 Log.i("RTSP","MediaPlayer.Event.EndReached: ");
+                Toast.makeText(this, "EndReached", Toast.LENGTH_LONG).show();
+            
                 mMediaPlayer.release();
             break;
             case MediaPlayer.Event.Playing:
