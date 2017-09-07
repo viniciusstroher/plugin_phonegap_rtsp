@@ -16,4 +16,9 @@
      android:layout_height="wrap_content"
      android:layout_width="fill_parent"
      android:text="Fechar" />
+      <Button
+     android:id="@+id/atualizar_id"
+     android:layout_height="wrap_content"
+     android:layout_width="fill_parent"
+     android:text="Atualizar" />
 </LinearLayout>

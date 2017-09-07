@@ -88,7 +88,7 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mVideoWidth = 400;
-        mVideoHeight= 600;
+        mVideoHeight= 700;
         
         fakeR = new FakeR(this);
         setContentView(fakeR.getId("layout", "rtsp_w3_activity"));
@@ -109,6 +109,17 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
           public void onClick(View v) {
              // Code here executes on main thread after user presses button
             releasePlayer();
+            RtspW3Activity.this.finish();
+
+          }
+        });
+
+        final Button button = (Button)findViewById(fakeR.getId("id", "atualizar_id"));
+        button.setOnClickListener(new View.OnClickListener() {
+          public void onClick(View v) {
+             // Code here executes on main thread after user presses button
+            releasePlayer();
+            createPlayer();
             RtspW3Activity.this.finish();
 
           }
