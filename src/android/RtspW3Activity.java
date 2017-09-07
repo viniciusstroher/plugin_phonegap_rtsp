@@ -127,7 +127,7 @@ public class RtspW3Activity extends Activity{
         releasePlayer();
     }
     @Override
-    protected void onBackPressed(){
+    public  void onBackPressed(){
         super.onDestroy();
         releasePlayer();
     }
