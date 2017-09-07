@@ -204,7 +204,7 @@ public class RtspW3Activity extends Activity{
 
         } catch (Exception e) {
             Toast.makeText(this, "Error:"+e.getMessage(), Toast.LENGTH_LONG).show();
-             RtspW3Activity.this.finish();
+            RtspW3Activity.this.finish();
  
         }
     }
@@ -213,7 +213,7 @@ public class RtspW3Activity extends Activity{
         if (libvlc == null){
             return;
         }
-        
+
         m.release();
         m = null;
         mMediaPlayer.stop();
@@ -245,8 +245,9 @@ public class RtspW3Activity extends Activity{
 
             switch(event.type) {
                 case MediaPlayer.Event.EndReached:
-                //Log.d(TAG, "MediaPlayerEndReached");
-                //player.releasePlayer();
+                    Log.i("RTSP","MediaPlayer.Event.EndReached: ");
+                    player.releasePlayer();
+                    RtspW3Activity.this.finish();
                 break;
                 case MediaPlayer.Event.Playing:
                 case MediaPlayer.Event.Paused:
