@@ -126,7 +126,11 @@ public class RtspW3Activity extends Activity{
         super.onDestroy();
         releasePlayer();
     }
-
+    @Override
+    protected void onBackPressed(){
+        super.onDestroy();
+        releasePlayer();
+    }
 
     private void setSize(int width, int height) {
 
