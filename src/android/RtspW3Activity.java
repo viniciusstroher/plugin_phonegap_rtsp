@@ -74,6 +74,8 @@ public class RtspW3Activity extends Activity{
     // media player
     private LibVLC libvlc;
     private MediaPlayer mMediaPlayer = null;
+    private Media m                  = null;
+
     private int mVideoWidth;
     private int mVideoHeight;
     private final static int VideoSizeChanged = -1;
@@ -125,48 +127,13 @@ public class RtspW3Activity extends Activity{
 
 
     private void setSize(int width, int height) {
-        mVideoWidth = width;
-        mVideoHeight = height;
-        if (mVideoWidth * mVideoHeight <= 1)
-            return;
 
-        if(holder == null || mSurface == null)
-            return;
-
-        // get screen size
-        int w = 300;
-        int h = 300;
-
-        // getWindow().getDecorView() doesn't always take orientation into
-        // account, we have to correct the values
-        boolean isPortrait = getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
-        if (w > h && isPortrait || w < h && !isPortrait) {
-            int i = w;
-            w = h;
-            h = i;
-        }
-
-        float videoAR  = (float) mVideoWidth / (float) mVideoHeight;
-        float screenAR = (float) w / (float) h;
-
-        if (screenAR < videoAR)
-            h = (int) (w / videoAR);
-        else
-            w = (int) (h * videoAR);
-
-        // force surface buffer size
-        holder.setFixedSize(mVideoWidth, mVideoHeight);
-        // set display size
         LayoutParams lp = mSurface.getLayoutParams();
         lp.width  = w;
         lp.height = h;
         mSurface.setLayoutParams(lp);
         mSurface.invalidate();
     }
-
-    /*************
-     * Player
-     *************/
 
     private void createPlayer(String media) {
         //releasePlayer();
@@ -178,8 +145,6 @@ public class RtspW3Activity extends Activity{
                 toast.show();
             }
 
-            // Create LibVLC
-            // TODO: make this more robust, and sync with audio demo
             ArrayList<String> options = new ArrayList<String>();
             for(String v : optionString){
                 Log.i("RTSP","ADD OPTIONS VLC LIB INSTANCE: "+v);
@@ -189,28 +154,26 @@ public class RtspW3Activity extends Activity{
             //options.add("--rtsp-tcp");
             //options.add("--rtsp-user=");
             //options.add("--rtsp-pwd=");
-            
             //options.add("--aout=opensles");
             //options.add("--audio-time-stretch"); // time stretching
+
             options.add("-vvv"); // verbosity
             Log.i("RTSP","OPTIONS VLC LIB INSTANCE: "+options.toString());
             libvlc = new LibVLC(getApplicationContext(),options);
-            //libvlc = new LibVLC(getApplicationContext());
+
             
             holder.setKeepScreenOn(true);
 
-            // Create media player
             mMediaPlayer = new MediaPlayer(libvlc);
             mMediaPlayer.setEventListener(mPlayerListener);
 
             // Set up video output
             final IVLCVout vout = mMediaPlayer.getVLCVout();
             vout.setVideoView(mSurface);
-            //vout.setSubtitlesView(mSurfaceSubtitles);
-            //vout.addCallback(this);
+
             vout.attachViews();
 
-            Media m = new Media(libvlc,Uri.parse(media));
+            m = new Media(libvlc,Uri.parse(media));
             mMediaPlayer.setMedia(m);
             mMediaPlayer.play();
         } catch (Exception e) {
@@ -223,15 +186,19 @@ public class RtspW3Activity extends Activity{
     private void releasePlayer() {
         if (libvlc == null)
             return;
+        m.release();
+        m = null;
         mMediaPlayer.stop();
         mMediaPlayer.release();
+        
         final IVLCVout vout = mMediaPlayer.getVLCVout();
         vout.detachViews();
+        
         holder = null;
         libvlc.release();
         libvlc = null;
 
-        mVideoWidth = 0;
+        mVideoWidth  = 0;
         mVideoHeight = 0;
     }
 
