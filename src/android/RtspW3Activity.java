@@ -117,15 +117,6 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
           }
         });
 
-        final Button button2 = (Button)findViewById(fakeR.getId("id", "atualizar_id"));
-        button2.setOnClickListener(new View.OnClickListener() {
-          public void onClick(View v) {
-            Log.i("RTSP","ATUALIZANDO VIEW ");
-            releasePlayer();
-            createPlayer(link_rtsp);
-          }
-        });
-
         mSurface = (SurfaceView) findViewById(fakeR.getId("id", "surface"));        
         holder   = mSurface.getHolder();
         holder.setFixedSize(mVideoWidth, mVideoHeight);
@@ -146,7 +137,7 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
 
     @Override
     protected void onPause() {
-        releasePlayer();
+        //releasePlayer();
         super.onPause();
     }
 
@@ -207,7 +198,7 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
         if (libvlc == null){
             return;
         }
-        
+
         if(mMediaPlayer != null){
             mMediaPlayer.stop();
         }
@@ -235,9 +226,9 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
         switch(event.type) {
             case MediaPlayer.Event.EndReached:
                 Log.i("RTSP","MediaPlayer.Event.EndReached: ");
-                Toast.makeText(this, "EndReached", Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "EndReached", Toast.LENGTH_LONG).show();
             
-                mMediaPlayer.release();
+                //mMediaPlayer.release();
             break;
             case MediaPlayer.Event.Playing:
             case MediaPlayer.Event.Paused:
