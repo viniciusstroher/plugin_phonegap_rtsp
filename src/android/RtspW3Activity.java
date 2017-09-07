@@ -113,7 +113,10 @@ public class RtspW3Activity extends Activity{
         });
 
         mSurface = (SurfaceView) findViewById(fakeR.getId("id", "surface"));        
+        
+
         holder   = mSurface.getHolder();
+        holder.setFixedSize(mVideoWidth, mVideoHeight);
         createPlayer(link_rtsp);
     }
 

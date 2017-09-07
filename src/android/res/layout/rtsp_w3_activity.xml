@@ -9,7 +9,6 @@
     <SurfaceView
     android:id="@+id/surface"
     android:layout_width="fill_parent"
-    android:layout_height=".80"
     android:layout_gravity="center" />
     
     <Button
