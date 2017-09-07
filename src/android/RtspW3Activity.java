@@ -207,7 +207,6 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
         mMediaPlayer.stop();
         final IVLCVout vout = mMediaPlayer.getVLCVout();
         vout.detachViews();
-        vout.removeCallback(this);
         mMediaPlayer.release();
         libvlc.release();
         libvlc = null;
