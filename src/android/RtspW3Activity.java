@@ -114,8 +114,8 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
           }
         });
 
-        final Button button = (Button)findViewById(fakeR.getId("id", "atualizar_id"));
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button button2 = (Button)findViewById(fakeR.getId("id", "atualizar_id"));
+        button2.setOnClickListener(new View.OnClickListener() {
           public void onClick(View v) {
              // Code here executes on main thread after user presses button
             releasePlayer();
