@@ -216,12 +216,11 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
 
     @Override
     public void onEvent(MediaPlayer.Event event) {
-        RtspW3Activity player = (RtspW3Activity)mOwner.get();
 
         switch(event.type) {
             case MediaPlayer.Event.EndReached:
                 Log.i("RTSP","MediaPlayer.Event.EndReached: ");
-                player.releasePlayer();
+                mMediaPlayer.releasePlayer();
             break;
             case MediaPlayer.Event.Playing:
             case MediaPlayer.Event.Paused:
