@@ -84,6 +84,8 @@ public class RtspW3Activity extends Activity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mVideoWidth = 600;
+        mVideoHeight= 600;
         
         fakeR = new FakeR(this);
         setContentView(fakeR.getId("layout", "rtsp_w3_activity"));
@@ -129,14 +131,14 @@ public class RtspW3Activity extends Activity{
     private void setSize(int width, int height) {
 
         LayoutParams lp = mSurface.getLayoutParams();
-        lp.width  = w;
-        lp.height = h;
+        lp.width        = width;
+        lp.height       = height;
+
         mSurface.setLayoutParams(lp);
         mSurface.invalidate();
     }
 
     private void createPlayer(String media) {
-        //releasePlayer();
         try {
             if (media.length() > 0) {
                 Toast toast = Toast.makeText(this, media, Toast.LENGTH_LONG);
@@ -182,7 +184,6 @@ public class RtspW3Activity extends Activity{
         }
     }
 
-    // TODO: handle this cleaner
     private void releasePlayer() {
         if (libvlc == null)
             return;
@@ -203,6 +204,7 @@ public class RtspW3Activity extends Activity{
     }
 
     private MediaPlayer.EventListener mPlayerListener = new MyPlayerListener(this);
+
     private static class MyPlayerListener implements MediaPlayer.EventListener {
         private WeakReference<Activity> mOwner;
 
@@ -223,7 +225,7 @@ public class RtspW3Activity extends Activity{
                 case MediaPlayer.Event.Paused:
                 case MediaPlayer.Event.Stopped:
                 default:
-                    break;
+                break;
             }
         }
     }
