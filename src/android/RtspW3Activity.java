@@ -108,8 +108,9 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
         button.setOnClickListener(new View.OnClickListener() {
           public void onClick(View v) {
             Log.i("RTSP","FECHANDO VIEW ");
-             // Code here executes on main thread after user presses button
+
             onBackPressed();
+            releasePlayer();
             finish();
             //releasePlayer();
             //RtspW3Activity.this.finish();
@@ -199,6 +200,10 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
             return;
         }
 
+        if(m != null){
+            m.stop();
+        }
+        
         if(mMediaPlayer != null){
             mMediaPlayer.stop();
         }
@@ -212,6 +217,8 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
             mMediaPlayer.release();
             mMediaPlayer = null;
         }
+
+
 
         if (libvlc != null){
             libvlc.release();
