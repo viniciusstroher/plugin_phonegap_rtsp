@@ -200,9 +200,6 @@ public class RtspW3Activity extends Activity implements MediaPlayer.EventListene
             return;
         }
 
-        if(m != null){
-            m.stop();
-        }
         
         if(mMediaPlayer != null){
             mMediaPlayer.stop();
