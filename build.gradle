@@ -1,3 +1,5 @@
 dependencies {
-    compile "de.mrmaffen:vlc-android-sdk:1.9.8"
+    //compile "de.mrmaffen:vlc-android-sdk:2.0.6"
+    compile "io.github.mkjung:vlc-android-sdk-ivi:0.0.1"
+    
 }
